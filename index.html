@@ -102,15 +102,6 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
     radial-gradient(ellipse at 50% 100%, rgba(139,111,71,0.06) 0%, transparent 40%);
   pointer-events: none;
 }
-.hero-bg-overlay {
-  position: absolute; inset: 0;
-  background-image: url('assets/hero-bg-abstract.webp');
-  background-size: cover;
-  background-position: center 30%;
-  opacity: 0.08;
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
 .hero::after {
   content: ''; position: absolute; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
@@ -221,58 +212,16 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 
 /* ========== ABOUT ========== */
 .about-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
 }
-.about-images {
-  display: flex; flex-direction: column; gap: 1.25rem;
-}
-.about-image-wrap {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-.about-image-wrap img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
-}
-.about-image-wrap:hover img {
-  filter: brightness(1.06);
-}
-.about-image-wrap::after {
-  content: '';
-  position: absolute; inset: 12px;
-  border: 1.5px solid rgba(139,111,71,0.2);
-  border-radius: 12px;
-  pointer-events: none;
-  z-index: 2;
-  transition: opacity var(--transition);
-}
-.about-image-wrap:hover::after {
-  border-color: rgba(139,111,71,0.4);
-}
-.about-frame-corner {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.35;
-}
-.about-frame-corner.tl {
-  top: -4px; left: -4px;
-  width: 44px; height: 44px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-  border-radius: var(--radius-lg) 0 0 0;
-}
-.about-frame-corner.br {
-  bottom: -4px; right: -4px;
-  width: 44px; height: 44px;
-  border-bottom: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-  border-radius: 0 0 var(--radius-lg) 0;
+.about-image {
+  width: 100%; aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #1a2a4a, #0f3460);
+  border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;
+  color: #a8b4d8; font-size: 0.875rem; text-align: center; padding: 2rem;
 }
 .about-text h2 { margin-bottom: 1rem; }
 .about-text .body-text { margin-bottom: 1rem; }
-.about-text .body-text:last-of-type { margin-bottom: 0; }
 .about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
 .about-detail { border-left: 2px solid var(--accent); padding-left: 1rem; }
 .about-detail .label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); font-weight: 600; }
@@ -291,26 +240,7 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 .service-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
 .service-card .price { font-size: 0.8125rem; color: var(--accent); font-weight: 600; margin-top: 1rem; }
 
-/* ========== SERVICE CARD — ALBUM COVER STYLE ========== */
-.album-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-.album-card .album-art {
-  width: 100%; aspect-ratio: 4/3; overflow: hidden;
-  background: var(--bg-sand); position: relative;
-}
-.album-card .album-art img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.album-card:hover .album-art img { transform: scale(1.05); }
-.album-card .album-art::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 40%; background: linear-gradient(transparent, rgba(0,0,0,0.15));
-  pointer-events: none;
-}
-.album-card .album-body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
-.album-card .album-body h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
-.album-card .album-body p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
-.album-card .album-body .price { font-size: 0.8125rem; color: var(--accent); font-weight: 600; margin-top: 0.75rem; }
+/* ========== ABOUT ========== */
 
 /* ========== SHOP CTA ========== */
 .shop-cta {
@@ -327,13 +257,6 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 .shop-cta p { color: #a09888; max-width: 540px; margin: 0 auto 2rem; }
 .shop-cta .btn-primary { background: #fff; color: #1a1410; }
 .shop-cta .btn-primary:hover { background: #e8e0d4; }
-
-/* ========== SECTION DIVIDER ========== */
-.section-divider-wave {
-  line-height: 0;
-  overflow: hidden;
-  margin-top: -1px;
-}
 
 /* ========== SCROLL REVEAL ========== */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
@@ -451,12 +374,11 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 
 <!-- ========== HERO ========== -->
 <section class="hero" id="top">
-  <div class="hero-bg-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge">Professional Photography</div>
     <div class="hero-text">
       <h1 class="display-hero">Capturing moments<br>that outlast the day</h1>
-      <p>Portraits, weddings, sports, events, and fine art — serving Manhattan, IL and the greater Chicago area with an eye for the light that most people miss.</p>
+      <p>Portraits, weddings, sports, events, and fine art — serving Manhattan, IL and the greater Chicago area with a Canon system, a Mavic 3 Pro, and an eye for the light that most people miss.</p>
       <div class="hero-actions">
         <a href="#gallery" class="btn btn-primary">View Portfolio</a>
         <a href="https://ifyp0g-1s.myshopify.com/" class="btn btn-outline" target="_blank">Shop Prints</a>
@@ -469,13 +391,6 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
     </div>
   </div>
 </section>
-
-<!-- ========== HERO → SECTION DIVIDER ========== -->
-<div class="section-divider-wave" aria-hidden="true">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
-    <path d="M0,0 L1440,0 L1440,60 Q1080,40 720,55 Q360,70 0,45 Z" fill="var(--bg-warm)"/>
-  </svg>
-</div>
 
 <!-- ========== SERVICES ========== -->
 <section class="section reveal" id="services">
@@ -492,31 +407,17 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
         <p>Individual, family, senior portraits, and headshots. Natural light or strobe — your setting, your look.</p>
         <p class="price">Starting at $150</p>
       </div>
-      <div class="service-card album-card">
-        <div class="album-art">
-          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/0241eee95a6a4ec5b956eb7ab41fea3c.jpg?v=1781955820" alt="Professional headshot — man in navy suit with argyle tie" loading="lazy">
-        </div>
-        <div class="album-body">
-          <h3>Headshot Sessions</h3>
-          <p>Professional headshots for LinkedIn, corporate websites, and personal branding. Clean studio lighting, multiple looks, fully edited digital files with quick turnaround.</p>
-          <p class="price">Starting at $150</p>
-        </div>
-      </div>
       <div class="service-card">
         <div class="icon">🕺</div>
         <h3>Formal / Prom Sessions</h3>
         <p>Prom, homecoming, and formal event portraits. Quick-turn sessions with fast digital delivery — perfect for parents, couples, and groups.</p>
         <p class="price">Starting at $75</p>
       </div>
-      <div class="service-card album-card">
-        <div class="album-art">
-          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wedding-bouquet-closeup.jpg?v=1781869518" alt="Wedding bouquet close-up" loading="lazy">
-        </div>
-        <div class="album-body">
-          <h3>Weddings &amp; Engagement</h3>
-          <p>Full-day coverage, engagement sessions, album design. Every moment from getting ready to the last dance.</p>
-          <p class="price">Starting at $2,500</p>
-        </div>
+      <div class="service-card">
+        <div class="icon">💍</div>
+        <h3>Weddings &amp; Engagement</h3>
+        <p>Full-day coverage, engagement sessions, album design. Every moment from getting ready to the last dance.</p>
+        <p class="price">Starting at $2,500</p>
       </div>
       <div class="service-card">
         <div class="icon">⚾</div>
@@ -550,22 +451,27 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 <section class="section section-alt reveal" id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-images">
-        <div class="about-image-wrap" style="aspect-ratio:4/5;">
-          <div class="about-frame-corner tl"></div>
-          <div class="about-frame-corner br"></div>
-          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/9f45e0344e81b021cc08f9293d658108_e8e49695-f434-4e19-a592-ee82b2e76f67.jpg?v=1781973873" alt="Bill Thorpe in the forest with telephoto lens and camera" loading="lazy">
-        </div>
-        <div class="about-image-wrap" style="aspect-ratio:4/3; margin-top:1.25rem;">
-          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/ae1f68d34f55676905c0d4b7db5665e0.jpg?v=1781973874" alt="Bill Thorpe taking a mirror selfie at a wedding venue with camera" loading="lazy">
+      <div class="about-image" style="position:relative; overflow:hidden; background:none; padding:0;">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/bill-thorpe-forest-about.jpg?v=1781871771" alt="Bill Thorpe — wildlife photographer in the forest with DSLR" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px;" loading="lazy">
+        <div style="position:absolute;bottom:1.5rem;left:1.5rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.6);">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600;margin:0;">Bill Thorpe</p>
+          <p style="font-size:0.75rem;opacity:0.85;margin:0.15rem 0 0;">Manhattan, IL</p>
         </div>
       </div>
       <div class="about-text">
         <p class="section-label">About</p>
-        <h2 class="display-large">Every frame holds<br>something real</h2>
-        <p class="body-text">Weddings, portraits, game-day action, quiet landscapes — each one is a moment someone wanted preserved. The craft is in being ready for it, reading the light, and getting out of the way when it's happening naturally.</p>
-        <p class="body-text">Based in Manhattan, Illinois, covering the greater Chicago area. Full-resolution, professionally edited files delivered digitally with quick turnaround. Prints and digital downloads available through the shop.</p>
+        <h2 class="display-large">A pipefitter's eye<br>for composition</h2>
+        <p class="body-text">I've spent years climbing steel and reading blueprints — trades that teach you to see structure, light, and perspective in ways most people don't. That same eye carries over when I pick up the camera.</p>
+        <p class="body-text">Based in Manhattan, Illinois, I shoot with a Canon full-frame system, a Mavic 3 Pro for aerial work, and a custom FPV drone for the shots that need to move. Post-production runs through Photo Mechanic and Aftershoot — fast culling, consistent edits, quick delivery.</p>
         <div class="about-details">
+          <div class="about-detail">
+            <div class="label">Equipment</div>
+            <div class="value">Canon 5D III/II<br>70-200 f/2.8L IS II</div>
+          </div>
+          <div class="about-detail">
+            <div class="label">Approach</div>
+            <div class="value">Natural light first<br>Clean, candid, true</div>
+          </div>
           <div class="about-detail">
             <div class="label">Coverage Area</div>
             <div class="value">Manhattan, IL<br>Chicago &amp; Will County</div>
@@ -590,14 +496,11 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
     </div>
 
     <div class="filter-bar" role="tablist" aria-label="Filter by category">
-      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All <span class="count">(35)</span></button>
+      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All <span class="count">(22)</span></button>
       <button class="filter-btn" data-filter="nature" role="tab">Nature &amp; Wildlife <span class="count">(8)</span></button>
-      <button class="filter-btn" data-filter="chicago" role="tab">Chicago &amp; Great Lakes <span class="count">(8)</span></button>
-      <button class="filter-btn" data-filter="sports" role="tab">Sports <span class="count">(8)</span></button>
-      <button class="filter-btn" data-filter="portraits" role="tab">Portraits <span class="count">(4)</span></button>
-      <button class="filter-btn" data-filter="weddings" role="tab">Weddings <span class="count">(5)</span></button>
-      <button class="filter-btn" data-filter="commercial" role="tab">Event &amp; Commercial <span class="count">(1)</span></button>
-      <button class="filter-btn" data-filter="formal" role="tab">Formal / Prom <span class="count">(1)</span></button>
+      <button class="filter-btn" data-filter="chicago" role="tab">Chicago &amp; Great Lakes <span class="count">(7)</span></button>
+      <button class="filter-btn" data-filter="sports" role="tab">Sports <span class="count">(4)</span></button>
+      <button class="filter-btn" data-filter="portraits" role="tab">Portraits <span class="count">(3)</span></button>
     </div>
 
     <div class="gallery" role="tabpanel">
@@ -623,7 +526,10 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
         <div class="overlay"><h3>Mallard Drake — Mirror Water</h3><span>Nature &bull; Fine Art Print</span></div>
       </div>
 
-
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/cormorant-drying-wings.jpg?v=1781839276" alt="Cormorant with wings spread on driftwood" loading="lazy">
+        <div class="overlay"><h3>Cormorant — Drying the Wings</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
 
       <div class="gallery-item" data-category="nature">
         <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/coyote-pup-den.jpg?v=1781839296" alt="Coyote pup peeking out from its den in the grass" loading="lazy">
@@ -635,7 +541,10 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
         <div class="overlay"><h3>Golden Hour — Sentinels at Dusk</h3><span>Nature &bull; Fine Art Print</span></div>
       </div>
 
-
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/mist-on-the-water-first-light.jpg?v=1781898148" alt="Misty lake at golden hour with duck in flight and bare branch reflections" loading="lazy" style="opacity:0.5">
+        <div class="overlay"><h3>Mist on the Water — First Light</h3><span>Nature &bull; Digital Download</span></div>
+      </div>
 
       <div class="gallery-item" data-category="nature">
         <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/f4c87bc7452fa2dee38757c70a3e5e79_78b69621-4594-4555-8f68-f5ac3dc53c28.jpg?v=1781900413" alt="Chicago Harbor at golden hour with red sailboat, ducks in foreground, Willis Tower skyline" loading="lazy">
@@ -678,11 +587,6 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
         <div class="overlay"><h3>Wrigley Building — Michigan Avenue at Night</h3><span>Chicago &bull; Fine Art Print</span></div>
       </div>
 
-      <div class="gallery-item" data-category="chicago">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/9e4cabeabfa0283c5a31076e3400f997.jpg?v=1781973316" alt="Calm Lake Michigan breakwater with lighthouse and seagulls under overcast sky" loading="lazy">
-        <div class="overlay"><h3>Breakwater Lighthouse — Lake Michigan</h3><span>Chicago &bull; Fine Art Print</span></div>
-      </div>
-
       <!-- SPORTS -->
       <div class="gallery-item" data-category="sports">
         <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/little-league-baseball-action.jpg?v=1781824634" alt="Little league baseball player mid-swing on a cloudy day" loading="lazy">
@@ -720,72 +624,32 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
       </div>
 
       <div class="gallery-item" data-category="sports">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/b7ed348d7842fdaa0e19e1d7301888f6.jpg?v=1781973314" alt="Minooka lacrosse attacker vs Lincoln-Way defender in goal mouth" loading="lazy">
-        <div class="overlay"><h3>Lincoln-Way Lacrosse — Goal Mouth Action</h3><span>Sports &bull; Digital Download</span></div>
-      </div>
-
-      <div class="gallery-item" data-category="nature">
         <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wapanesse-trail-bridge.jpg?v=1781838126" alt="Sunlit path leading to a wooden bridge on Wapanesse Trail" loading="lazy">
         <div class="overlay"><h3>Wapanesse Trail — The Bridge</h3><span>Nature &bull; Fine Art Print</span></div>
       </div>
 
       <!-- PORTRAITS -->
       <div class="gallery-item" data-category="portraits">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/1e402acdb297ac3a988614bdca248d5b.jpg?v=1781967155" alt="Bride holding bouquet of blue and white flowers, smiling in sunlight" loading="lazy">
-        <div class="overlay"><h3>Bride — Blue Bouquet</h3><span>Portraits &bull; Wedding</span></div>
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/engagement-session-summer-field.jpg?v=1781840323" alt="Young couple embracing in a sunny field — she in white lace dress and cowboy boots, he in striped shirt" loading="lazy">
+        <div class="overlay"><h3>Engagement Session — Summer Field</h3><span>Portraits &bull; Fine Art Print</span></div>
       </div>
 
       <div class="gallery-item" data-category="portraits">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/0241eee95a6a4ec5b956eb7ab41fea3c.jpg?v=1781955820" alt="Professional headshot — man in navy suit with argyle tie" loading="lazy">
-        <div class="overlay"><h3>Headshot — Navy Suit</h3><span>Portraits &bull; Digital Download</span></div>
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/portrait-couple-formal-park.jpg?v=1781875677" alt="Formal couple portrait in park with matching blue tones" loading="lazy">
+        <div class="overlay"><h3>Prom — Blue Elegance</h3><span>Portraits &bull; Digital Download</span></div>
       </div>
 
       <div class="gallery-item" data-category="portraits">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/b651749daa39c3a8ed5925473e447f30.jpg?v=1781955820" alt="Professional headshot — man in dark suit with geometric tie" loading="lazy">
-        <div class="overlay"><h3>Headshot — Geometric Tie</h3><span>Portraits &bull; Digital Download</span></div>
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/portrait-couple-yellow-gown-tux.jpg?v=1781875797" alt="Couple in yellow gown and black tuxedo with bouquet in formal garden" loading="lazy">
+        <div class="overlay"><h3>Formal — Yellow Rose</h3><span>Portraits &bull; Digital Download</span></div>
       </div>
 
       <div class="gallery-item" data-category="portraits">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/2ea898f8eece88959e144f3245ff74e4.jpg?v=1781955820" alt="Professional headshot — man with beard and red striped tie" loading="lazy">
-        <div class="overlay"><h3>Headshot — Red Tie</h3><span>Portraits &bull; Digital Download</span></div>
-      </div>
-
-      <!-- WEDDINGS -->
-      <div class="gallery-item" data-category="weddings">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wedding-couple-fairy-lights.jpg?v=1781840767" alt="Bride and groom in intimate close-up with fairy lights and lantern in background" loading="lazy">
-        <div class="overlay"><h3>Wedding — Fairy Lights</h3><span>Weddings &bull; Evening ceremony</span></div>
-      </div>
-
-      <div class="gallery-item" data-category="weddings">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/0986cd5492d957bdac18760b88ccc377.jpg?v=1781967151" alt="Bride and groom spelling 'LOVE' with hand signs from behind in black and white" loading="lazy">
-        <div class="overlay"><h3>Wedding — Spelling LOVE</h3><span>Weddings &bull; Black &amp; White</span></div>
-      </div>
-
-      <div class="gallery-item" data-category="weddings">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/6a7481ffa57a9c0614869847f47c3119.jpg?v=1781973312" alt="Bride and groom sitting on park bench — she in white tiered dress, he in grey vest and jeans" loading="lazy">
-        <div class="overlay"><h3>Wedding — Park Bench</h3><span>Weddings &bull; Golden Hour</span></div>
-      </div>
-
-      <div class="gallery-item" data-category="weddings">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/e2e21579467b3a48bc999ecbb12fa612.jpg?v=1781967153" alt="Bride and groom walking away looking back over shoulders, black and white" loading="lazy">
-        <div class="overlay"><h3>Wedding — Walking Away</h3><span>Weddings &bull; Black &amp; White</span></div>
-      </div>
-
-      <div class="gallery-item" data-category="weddings">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/1e402acdb297ac3a988614bdca248d5b.jpg?v=1781967155" alt="Bride holding bouquet of blue and white flowers, smiling in sunlight" loading="lazy">
-        <div class="overlay"><h3>Wedding — Bride with Bouquet</h3><span>Weddings &bull; Portraits</span></div>
-      </div>
-
-      <!-- COMMERCIAL / EVENT -->
-      <div class="gallery-item" data-category="commercial">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/d928a7c487e1636cee88a12338a23875.jpg?v=1781973315" alt="Archaeological artifacts being documented — pottery, stone tools, arrowheads" loading="lazy">
-        <div class="overlay"><h3>Artifact Documentation — Commercial</h3><span>Commercial &bull; Event Coverage</span></div>
-      </div>
-
-      <!-- FORMAL / PROM -->
-      <div class="gallery-item" data-category="formal">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/b04e3be377e5c8f4830579970e3c5455.jpg?v=1781974341" alt="Couple dressed for prom in front of a vintage teal truck — pink gown and matching tie" loading="lazy">
-        <div class="overlay"><h3>Prom — Vintage Truck</h3><span>Formal &bull; Golden Hour</span></div>
+        <div class="placeholder-card">
+          <div class="icon">👤</div>
+          <h4>Headshots</h4>
+          <p>Coming soon — professional and personal branding</p>
+        </div>
       </div>
 
     </div>
@@ -988,28 +852,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ========== ABOUT IMAGE PARALLAX ==========
-const aboutImgWrap = document.querySelector('.about-image-wrap');
-if (aboutImgWrap) {
-  const aboutImg = aboutImgWrap.querySelector('img');
-  let pTicking = false;
-  window.addEventListener('scroll', () => {
-    if (!pTicking) {
-      window.requestAnimationFrame(() => {
-        const rect = aboutImgWrap.getBoundingClientRect();
-        const winH = window.innerHeight;
-        if (rect.top < winH && rect.bottom > 0) {
-          const scrollOffset = (winH - rect.top) / winH;
-          const translateY = Math.max(-20, Math.min(20, (scrollOffset - 0.5) * 40));
-          aboutImg.style.transform = `translateY(${translateY}px) scale(1.03)`;
-        }
-        pTicking = false;
-      });
-      pTicking = true;
-    }
-  });
-}
 
 // ========== HEADER SCROLL STATE ==========
 let ticking = false;
