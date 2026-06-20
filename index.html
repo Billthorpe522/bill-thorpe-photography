@@ -102,6 +102,15 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
     radial-gradient(ellipse at 50% 100%, rgba(139,111,71,0.06) 0%, transparent 40%);
   pointer-events: none;
 }
+.hero-bg-overlay {
+  position: absolute; inset: 0;
+  background-image: url('assets/hero-bg-abstract.webp');
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0.08;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 .hero::after {
   content: ''; position: absolute; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
@@ -214,14 +223,53 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 .about-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
 }
-.about-image {
-  width: 100%; aspect-ratio: 4/5;
-  background: linear-gradient(135deg, #1a2a4a, #0f3460);
-  border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;
-  color: #a8b4d8; font-size: 0.875rem; text-align: center; padding: 2rem;
+.about-image-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.about-image-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+}
+.about-image-wrap:hover img {
+  filter: brightness(1.06);
+}
+.about-image-wrap::after {
+  content: '';
+  position: absolute; inset: 12px;
+  border: 1.5px solid rgba(139,111,71,0.2);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity var(--transition);
+}
+.about-image-wrap:hover::after {
+  border-color: rgba(139,111,71,0.4);
+}
+.about-frame-corner {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.35;
+}
+.about-frame-corner.tl {
+  top: -4px; left: -4px;
+  width: 44px; height: 44px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-lg) 0 0 0;
+}
+.about-frame-corner.br {
+  bottom: -4px; right: -4px;
+  width: 44px; height: 44px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  border-radius: 0 0 var(--radius-lg) 0;
 }
 .about-text h2 { margin-bottom: 1rem; }
 .about-text .body-text { margin-bottom: 1rem; }
+.about-text .body-text:last-of-type { margin-bottom: 0; }
 .about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
 .about-detail { border-left: 2px solid var(--accent); padding-left: 1rem; }
 .about-detail .label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); font-weight: 600; }
@@ -276,6 +324,13 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 .shop-cta p { color: #a09888; max-width: 540px; margin: 0 auto 2rem; }
 .shop-cta .btn-primary { background: #fff; color: #1a1410; }
 .shop-cta .btn-primary:hover { background: #e8e0d4; }
+
+/* ========== SECTION DIVIDER ========== */
+.section-divider-wave {
+  line-height: 0;
+  overflow: hidden;
+  margin-top: -1px;
+}
 
 /* ========== SCROLL REVEAL ========== */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
@@ -393,6 +448,7 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 
 <!-- ========== HERO ========== -->
 <section class="hero" id="top">
+  <div class="hero-bg-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge">Professional Photography</div>
     <div class="hero-text">
@@ -410,6 +466,13 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
     </div>
   </div>
 </section>
+
+<!-- ========== HERO → SECTION DIVIDER ========== -->
+<div class="section-divider-wave" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
+    <path d="M0,0 L1440,0 L1440,60 Q1080,40 720,55 Q360,70 0,45 Z" fill="var(--bg-warm)"/>
+  </svg>
+</div>
 
 <!-- ========== SERVICES ========== -->
 <section class="section reveal" id="services">
@@ -478,18 +541,20 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 <section class="section section-alt reveal" id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-image" style="position:relative; overflow:hidden; background:none; padding:0;">
-        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/bill-thorpe-forest-about.jpg?v=1781871771" alt="Bill Thorpe — wildlife photographer in the forest with DSLR" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px;" loading="lazy">
-        <div style="position:absolute;bottom:1.5rem;left:1.5rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.6);">
+      <div class="about-image-wrap" style="aspect-ratio:4/5;">
+        <div class="about-frame-corner tl"></div>
+        <div class="about-frame-corner br"></div>
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/bill-thorpe-forest-about.jpg?v=1781871771" alt="Bill Thorpe — wildlife photographer in the forest with DSLR" loading="lazy">
+        <div style="position:absolute;bottom:1.5rem;left:1.5rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.6);z-index:3;">
           <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600;margin:0;">Bill Thorpe</p>
           <p style="font-size:0.75rem;opacity:0.85;margin:0.15rem 0 0;">Manhattan, IL</p>
         </div>
       </div>
       <div class="about-text">
         <p class="section-label">About</p>
-        <h2 class="display-large">A pipefitter's eye<br>for composition</h2>
-        <p class="body-text">I've spent years climbing steel and reading blueprints — trades that teach you to see structure, light, and perspective in ways most people don't. That same eye carries over when I pick up the camera.</p>
-        <p class="body-text">Based in Manhattan, Illinois, I shoot professionally and handle everything in-house — from capture to final edit. Quick turnaround on editing and delivery — every client gets full-resolution, edited files.</p>
+        <h2 class="display-large">Every frame holds<br>something real</h2>
+        <p class="body-text">Weddings, portraits, game-day action, quiet landscapes — each one is a moment someone wanted preserved. The craft is in being ready for it, reading the light, and getting out of the way when it's happening naturally.</p>
+        <p class="body-text">Based in Manhattan, Illinois, covering the greater Chicago area. Full-resolution, professionally edited files delivered digitally with quick turnaround. Prints and digital downloads available through the shop.</p>
         <div class="about-details">
           <div class="about-detail">
             <div class="label">Coverage Area</div>
@@ -881,6 +946,28 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ========== ABOUT IMAGE PARALLAX ==========
+const aboutImgWrap = document.querySelector('.about-image-wrap');
+if (aboutImgWrap) {
+  const aboutImg = aboutImgWrap.querySelector('img');
+  let pTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!pTicking) {
+      window.requestAnimationFrame(() => {
+        const rect = aboutImgWrap.getBoundingClientRect();
+        const winH = window.innerHeight;
+        if (rect.top < winH && rect.bottom > 0) {
+          const scrollOffset = (winH - rect.top) / winH;
+          const translateY = Math.max(-20, Math.min(20, (scrollOffset - 0.5) * 40));
+          aboutImg.style.transform = `translateY(${translateY}px) scale(1.03)`;
+        }
+        pTicking = false;
+      });
+      pTicking = true;
+    }
+  });
+}
 
 // ========== HEADER SCROLL STATE ==========
 let ticking = false;
