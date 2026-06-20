@@ -221,7 +221,10 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 
 /* ========== ABOUT ========== */
 .about-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+}
+.about-images {
+  display: flex; flex-direction: column; gap: 1.25rem;
 }
 .about-image-wrap {
   position: relative;
@@ -547,16 +550,14 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 <section class="section section-alt reveal" id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-image-wrap" style="aspect-ratio:4/5; background: linear-gradient(160deg, #2a2018, #1a1410); display:flex; align-items:center; justify-content:center;">
-        <div class="about-frame-corner tl"></div>
-        <div class="about-frame-corner br"></div>
-        <div style="text-align:center; padding:2rem; color:#8a8272; z-index:3;">
-          <div style="font-size:3rem; margin-bottom:1rem; opacity:0.4;">📷</div>
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600;color:#c8b89a;margin:0;">Photo coming soon</p>
+      <div class="about-images">
+        <div class="about-image-wrap" style="aspect-ratio:4/5;">
+          <div class="about-frame-corner tl"></div>
+          <div class="about-frame-corner br"></div>
+          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/9f45e0344e81b021cc08f9293d658108_e8e49695-f434-4e19-a592-ee82b2e76f67.jpg?v=1781973873" alt="Bill Thorpe in the forest with telephoto lens and camera" loading="lazy">
         </div>
-        <div style="position:absolute;bottom:1.5rem;left:1.5rem;color:#fff;z-index:3;">
-          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600;margin:0;">Bill Thorpe</p>
-          <p style="font-size:0.75rem;opacity:0.85;margin:0.15rem 0 0;">Manhattan, IL</p>
+        <div class="about-image-wrap" style="aspect-ratio:4/3; margin-top:1.25rem;">
+          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/ae1f68d34f55676905c0d4b7db5665e0.jpg?v=1781973874" alt="Bill Thorpe taking a mirror selfie at a wedding venue with camera" loading="lazy">
         </div>
       </div>
       <div class="about-text">
