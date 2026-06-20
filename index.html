@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bill Thorpe Photography — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #fcfcf9;
+  --bg-warm: #f8f6f1;
+  --bg-sand: #f0ede6;
+  --text: #1a1410;
+  --text-muted: #6b6558;
+  --text-light: #9a9488;
+  --accent: #8b6f47;
+  --accent-hover: #7a5f3a;
+  --accent-light: #e8dfd0;
+  --border: #d4cfc4;
+  --border-light: #e5e0d6;
+  --shadow-soft: 0 2px 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-card: 0 4px 16px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-hover: 0 12px 32px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --container: 1280px;
+  --header-h: 72px;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-w-content: 720px;
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+::selection { background: var(--accent); color: #fff; }
+img { display: block; max-width: 100%; height: auto; border-radius: 4px; }
+a { color: inherit; text-decoration: none; }
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia, serif; }
+.display-hero { font-size: clamp(2.5rem, 6vw, 4.375rem); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; font-family: 'Playfair Display', Georgia, serif; }
+.display-large { font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; font-family: 'Playfair Display', Georgia, serif; }
+.section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; line-height: 1.2; }
+.section-sub { font-size: 1rem; color: var(--text-muted); max-width: var(--max-w-content); margin: 0.75rem auto 0; line-height: 1.7; }
+.body-text { font-size: 0.9375rem; line-height: 1.7; color: var(--text-muted); }
+.caption { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+.section-label { font-size: 0.8125rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; font-family: 'Inter', sans-serif; margin-bottom: 0.5rem; }
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--header-h);
+  background: rgba(252,252,249,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100; display: flex; align-items: center;
+  transition: all var(--transition);
+}
+.header.scrolled { background: rgba(252,252,249,0.96); box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
+.header-inner {
+  max-width: var(--container); margin: 0 auto; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+}
+.header-logo { font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; }
+.header-logo span { color: var(--accent); }
+.header-nav { display: flex; gap: 0.25rem; align-items: center; }
+.header-nav a {
+  font-size: 0.8125rem; font-weight: 500; color: var(--text-muted);
+  padding: 0.5rem 0.875rem; border-radius: var(--radius-md);
+  transition: all var(--transition); position: relative;
+}
+.header-nav a:hover { background: var(--bg-sand); color: var(--text); }
+.header-nav a.active { color: var(--text); background: var(--bg-sand); }
+.header-cta {
+  background: var(--accent); color: #fff !important;
+  padding: 0.5rem 1.25rem !important; border-radius: var(--radius-sm) !important;
+}
+.header-cta:hover { background: var(--accent-hover) !important; }
+.mobile-toggle { display: none; background: none; border: none; padding: 0.5rem; cursor: pointer; color: var(--text); }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100dvh;
+  display: flex; align-items: center;
+  position: relative;
+  padding: calc(var(--header-h) + 2rem) 1.5rem 4rem;
+  background: linear-gradient(160deg, #0d0a08 0%, #1a1410 30%, #2a2018 60%, #1a1410 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(139,111,71,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 60%, rgba(200,170,120,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(139,111,71,0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none; opacity: 0.5;
+}
+.hero-inner {
+  max-width: var(--container); margin: 0 auto; width: 100%;
+  position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 100px; padding: 0.35rem 1rem;
+  font-size: 0.7rem; font-weight: 600; color: #c8b89a;
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #c8b89a; }
+.hero-text { max-width: 640px; }
+.hero-text h1 { margin-bottom: 1rem; }
+.hero-text p { font-size: 1.125rem; color: #a09888; line-height: 1.7; margin-bottom: 2rem; max-width: 540px; }
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; border-radius: var(--radius-sm);
+  font-size: 0.8125rem; font-weight: 600; transition: all var(--transition); border: none; cursor: pointer;
+}
+.btn-primary { background: #fff; color: #1a1410; }
+.btn-primary:hover { background: #e8e0d4; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+.btn-outline:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
+.hero-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06);
+  max-width: 480px;
+}
+.hero-stat .num { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: #e8e0d4; }
+.hero-stat .label { font-size: 0.75rem; color: #8a8272; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+
+/* ========== SECTION COMMON ========== */
+.section { padding: 5rem 1.5rem; }
+.section-inner { max-width: var(--container); margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 { margin-bottom: 0.5rem; }
+.section-alt { background: var(--bg-warm); }
+
+/* ========== CATEGORY FILTER ========== */
+.filter-bar {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 2.5rem;
+}
+.filter-btn {
+  background: var(--bg-sand); color: var(--text-muted); border: none;
+  padding: 0.5rem 1.25rem; border-radius: 100px;
+  font-size: 0.8125rem; font-weight: 500; white-space: nowrap;
+  transition: all var(--transition); cursor: pointer;
+}
+.filter-btn:hover { background: var(--border-light); }
+.filter-btn.active { background: var(--accent); color: #fff; }
+.filter-btn .count {
+  display: inline-block; margin-left: 0.35rem;
+  font-size: 0.6875rem; opacity: 0.6;
+}
+
+/* ========== MASONRY GALLERY ========== */
+.gallery { column-count: 1; column-gap: 1.25rem; max-width: var(--container); margin: 0 auto; }
+@media (min-width: 640px)  { .gallery { column-count: 2; } }
+@media (min-width: 1024px) { .gallery { column-count: 3; } }
+.gallery-item {
+  break-inside: avoid; margin-bottom: 1.25rem;
+  border-radius: var(--radius-md); overflow: hidden;
+  box-shadow: var(--shadow-soft); cursor: pointer;
+  transition: all var(--transition); position: relative;
+  background: var(--bg-sand);
+}
+.gallery-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+.gallery-item img { width: 100%; height: auto; display: block; }
+.gallery-item .overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem 1rem 1rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  opacity: 0; transition: opacity var(--transition);
+}
+.gallery-item:hover .overlay, .gallery-item:focus-within .overlay { opacity: 1; }
+.gallery-item .overlay h3 { color: #fff; font-size: 0.9375rem; font-weight: 600; }
+.gallery-item .overlay span { color: rgba(255,255,255,0.7); font-size: 0.75rem; }
+.gallery-item.hidden { display: none; }
+.gallery-empty {
+  text-align: center; padding: 4rem 2rem;
+  color: var(--text-light); font-size: 0.9375rem;
+  display: none;
+}
+.gallery-empty.visible { display: block; }
+
+/* ========== PLACEHOLDER CARD ========== */
+.placeholder-card {
+  border: 2px dashed var(--border-light); border-radius: var(--radius-md);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 3rem 1.5rem; text-align: center; min-height: 200px;
+  transition: all var(--transition); cursor: default;
+  background: var(--bg);
+}
+.placeholder-card .icon { font-size: 2rem; margin-bottom: 0.75rem; opacity: 0.5; }
+.placeholder-card h4 { font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.25rem; }
+.placeholder-card p { font-size: 0.8125rem; color: var(--text-light); }
+.placeholder-card:hover { border-color: var(--accent); background: var(--accent-light); }
+
+/* ========== ABOUT ========== */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+}
+.about-image {
+  width: 100%; aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #1a2a4a, #0f3460);
+  border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;
+  color: #a8b4d8; font-size: 0.875rem; text-align: center; padding: 2rem;
+}
+.about-text h2 { margin-bottom: 1rem; }
+.about-text .body-text { margin-bottom: 1rem; }
+.about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+.about-detail { border-left: 2px solid var(--accent); padding-left: 1rem; }
+.about-detail .label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); font-weight: 600; }
+.about-detail .value { font-size: 0.9375rem; font-weight: 500; margin-top: 0.25rem; }
+
+/* ========== SERVICES ========== */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.service-card {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 2rem;
+  transition: all var(--transition);
+}
+.service-card:hover { box-shadow: var(--shadow-card); border-color: var(--border); }
+.service-card .icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.service-card h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
+.service-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+.service-card .price { font-size: 0.8125rem; color: var(--accent); font-weight: 600; margin-top: 1rem; }
+
+/* ========== SERVICE CARD — ALBUM COVER STYLE ========== */
+.album-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.album-card .album-art {
+  width: 100%; aspect-ratio: 4/3; overflow: hidden;
+  background: var(--bg-sand); position: relative;
+}
+.album-card .album-art img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.album-card:hover .album-art img { transform: scale(1.05); }
+.album-card .album-art::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40%; background: linear-gradient(transparent, rgba(0,0,0,0.15));
+  pointer-events: none;
+}
+.album-card .album-body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.album-card .album-body h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+.album-card .album-body p { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
+.album-card .album-body .price { font-size: 0.8125rem; color: var(--accent); font-weight: 600; margin-top: 0.75rem; }
+
+/* ========== SHOP CTA ========== */
+.shop-cta {
+  background: linear-gradient(160deg, #0d0a08 0%, #1a1410 30%, #1e1812 60%, #1a1410 100%);
+  color: #fff; text-align: center; padding: 5rem 1.5rem;
+  position: relative; overflow: hidden;
+}
+.shop-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(139,111,71,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.shop-cta h2 { margin-bottom: 1rem; color: #fff; }
+.shop-cta p { color: #a09888; max-width: 540px; margin: 0 auto 2rem; }
+.shop-cta .btn-primary { background: #fff; color: #1a1410; }
+.shop-cta .btn-primary:hover { background: #e8e0d4; }
+
+/* ========== SCROLL REVEAL ========== */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== HOVER LIFT ========== */
+.hover-lift { transition: transform var(--transition), box-shadow var(--transition); }
+.hover-lift:hover { transform: translateY(-4px); }
+
+/* ========== SECTION DIVIDER ========== */
+.section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-light), transparent); max-width: 200px; margin: 0 auto; border: none; }
+
+/* ========== LIGHTBOX ========== */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  padding: 2rem;
+}
+.lightbox.open { opacity: 1; pointer-events: auto; }
+.lightbox img {
+  max-width: 90vw; max-height: 85vh; object-fit: contain;
+  border-radius: var(--radius-sm); box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  transform: scale(0.95); transition: transform 0.3s;
+}
+.lightbox.open img { transform: scale(1); }
+.lightbox-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: rgba(255,255,255,0.1); border: none; color: #fff;
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 1.25rem; cursor: pointer; transition: background var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.2); }
+.lightbox-caption {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.7); font-size: 0.875rem; text-align: center;
+  max-width: 80%;
+}
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.1); border: none; color: #fff;
+  width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+  font-size: 1.25rem; transition: background var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+/* ========== CONTACT ========== */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  max-width: var(--max-w-content); margin: 0 auto;
+}
+.contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-item .icon { font-size: 1.25rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-sand); border-radius: var(--radius-sm); flex-shrink: 0; }
+.contact-item h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.125rem; }
+.contact-item p { font-size: 0.8125rem; color: var(--text-muted); }
+
+/* ========== FOOTER ========== */
+.footer {
+  text-align: center; padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--border-light); color: var(--text-light); font-size: 0.8125rem;
+}
+.footer-social { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+.footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--bg-sand); transition: all var(--transition); font-size: 1rem; }
+.footer-social a:hover { background: var(--accent); color: #fff; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .header-nav.open { display: flex; flex-direction: column; position: fixed; top: var(--header-h); left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border-light); padding: 1rem; gap: 0.25rem; }
+  .header-nav.open a { width: 100%; padding: 0.75rem 1rem; }
+  .hero { padding-top: calc(var(--header-h) + 1.5rem); }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-details { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .lightbox-nav { display: none; }
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ========== SKIP LINK ========== */
+.skip-link { position: absolute; top: -100%; left: 1rem; background: var(--accent); color: #fff; padding: 0.5rem 1rem; border-radius: var(--radius-sm); z-index: 999; font-size: 0.875rem; font-weight: 600; }
+.skip-link:focus { top: 1rem; }
+</style>
+</head>
+<body>
+<a href="#gallery" class="skip-link">Skip to gallery</a>
+
+<!-- ========== HEADER ========== -->
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="#" class="header-logo">Bill Thorpe <span>Photography</span></a>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Portfolio</a>
+      <a href="#shop">Shop</a>
+      <a href="#contact">Contact</a>
+      <a href="https://ifyp0g-1s.myshopify.com/" class="header-cta" target="_blank">Store</a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.header-nav').classList.toggle('open')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">Professional Photography</div>
+    <div class="hero-text">
+      <h1 class="display-hero">Capturing moments<br>that outlast the day</h1>
+      <p>Portraits, weddings, sports, events, and fine art — serving Manhattan, IL and the greater Chicago area with a Canon system, a Mavic 3 Pro, and an eye for the light that most people miss.</p>
+      <div class="hero-actions">
+        <a href="#gallery" class="btn btn-primary">View Portfolio</a>
+        <a href="https://ifyp0g-1s.myshopify.com/" class="btn btn-outline" target="_blank">Shop Prints</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">15+</div><div class="label">Years Behind the Lens</div></div>
+      <div class="hero-stat"><div class="num">50+</div><div class="label">Events Covered</div></div>
+      <div class="hero-stat"><div class="num">IL</div><div class="label">Based in Manhattan</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section class="section reveal" id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Services</p>
+      <h2 class="display-large">What I offer</h2>
+      <p class="section-sub">Core photography services with video and editing available as add-on packages. Every session includes full-resolution edited images delivered digitally.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card album-card">
+        <div class="album-art">
+          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/prom-couple-portrait.jpg?v=1781869520" alt="Couple portrait with warm backlighting" loading="lazy">
+        </div>
+        <div class="album-body">
+          <h3>Portrait Sessions</h3>
+          <p>Individual, family, senior portraits, and headshots. Natural light or strobe — your setting, your look.</p>
+          <p class="price">Starting at $150</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon">🕺</div>
+        <h3>Formal / Prom Sessions</h3>
+        <p>Prom, homecoming, and formal event portraits. Quick-turn sessions with fast digital delivery — perfect for parents, couples, and groups.</p>
+        <p class="price">Starting at $75</p>
+      </div>
+      <div class="service-card album-card">
+        <div class="album-art">
+          <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wedding-bouquet-closeup.jpg?v=1781869518" alt="Wedding bouquet close-up" loading="lazy">
+        </div>
+        <div class="album-body">
+          <h3>Weddings &amp; Engagement</h3>
+          <p>Full-day coverage, engagement sessions, album design. Every moment from getting ready to the last dance.</p>
+          <p class="price">Starting at $2,500</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon">⚾</div>
+        <h3>Sports &amp; Action</h3>
+        <p>Game-day coverage for lacrosse, baseball, and more. Digital downloads available — perfect for parents and teams.</p>
+        <p class="price">From $12 per photo</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🏙️</div>
+        <h3>Event &amp; Commercial</h3>
+        <p>Corporate events, galas, product photography, artifact documentation. Reliable coverage you can count on.</p>
+        <p class="price">Starting at $500</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🛒</div>
+        <h3>Fine Art Prints</h3>
+        <p>Archival-quality prints on premium paper. Wildlife, landscapes, cityscapes — signed and numbered, shipped flat.</p>
+        <p class="price">From $35 (8x10)</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🎥</div>
+        <h3>Video &amp; Content</h3>
+        <p>Short-form video, event highlight reels, and content packages. Available as stand-alone or photo bundle add-on.</p>
+        <p class="price">From $60/hr</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="section section-alt reveal" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image" style="position:relative; overflow:hidden; background:none; padding:0;">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/bill-thorpe-forest-about.jpg?v=1781871771" alt="Bill Thorpe — wildlife photographer in the forest with DSLR" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px;" loading="lazy">
+        <div style="position:absolute;bottom:1.5rem;left:1.5rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.6);">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600;margin:0;">Bill Thorpe</p>
+          <p style="font-size:0.75rem;opacity:0.85;margin:0.15rem 0 0;">Manhattan, IL</p>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <h2 class="display-large">A pipefitter's eye<br>for composition</h2>
+        <p class="body-text">I've spent years climbing steel and reading blueprints — trades that teach you to see structure, light, and perspective in ways most people don't. That same eye carries over when I pick up the camera.</p>
+        <p class="body-text">Based in Manhattan, Illinois, I shoot with a Canon full-frame system, a Mavic 3 Pro for aerial work, and a custom FPV drone for the shots that need to move. Post-production runs through Photo Mechanic and Aftershoot — fast culling, consistent edits, quick delivery.</p>
+        <div class="about-details">
+          <div class="about-detail">
+            <div class="label">Equipment</div>
+            <div class="value">Canon 5D III/II<br>70-200 f/2.8L IS II</div>
+          </div>
+          <div class="about-detail">
+            <div class="label">Approach</div>
+            <div class="value">Natural light first<br>Clean, candid, true</div>
+          </div>
+          <div class="about-detail">
+            <div class="label">Coverage Area</div>
+            <div class="value">Manhattan, IL<br>Chicago &amp; Will County</div>
+          </div>
+          <div class="about-detail">
+            <div class="label">Legal</div>
+            <div class="value">Bill Thorpe Photography LLC<br>EIN 41-4392304</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="section reveal" id="gallery">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Portfolio</p>
+      <h2 class="display-large">Featured Work</h2>
+      <p class="section-sub">Browse by category — each image is available as a fine art print or digital download through the shop.</p>
+    </div>
+
+    <div class="filter-bar" role="tablist" aria-label="Filter by category">
+      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All <span class="count">(24)</span></button>
+      <button class="filter-btn" data-filter="nature" role="tab">Nature &amp; Wildlife <span class="count">(8)</span></button>
+      <button class="filter-btn" data-filter="chicago" role="tab">Chicago &amp; Great Lakes <span class="count">(7)</span></button>
+      <button class="filter-btn" data-filter="sports" role="tab">Sports <span class="count">(4)</span></button>
+      <button class="filter-btn" data-filter="portraits" role="tab">Portraits <span class="count">(3)</span></button>
+      <button class="filter-btn" data-filter="weddings" role="tab">Weddings <span class="count">(1)</span></button>
+      <button class="filter-btn" data-filter="formal" role="tab">Formal / Prom <span class="count">(1)</span></button>
+    </div>
+
+    <div class="gallery" role="tabpanel">
+
+      <!-- NATURE & WILDLIFE -->
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/great-egret-river-wading.jpg?v=1781833821" alt="Great Egret standing on a log in a shallow Illinois stream" loading="lazy">
+        <div class="overlay"><h3>Great Egret — River Wading</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/morning-light-forest-path.jpg?v=1781835593" alt="Sunrise light rays through forest mist along a dirt path" loading="lazy">
+        <div class="overlay"><h3>Morning Light — Forest Path</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/the-lonely-bench.jpg?v=1781835691" alt="Weathered red bench in a tall grass meadow" loading="lazy">
+        <div class="overlay"><h3>The Lonely Bench</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/mallard-drake-mirror-water.jpg?v=1781836622" alt="Mallard drake standing on driftwood with reflection in dark water" loading="lazy">
+        <div class="overlay"><h3>Mallard Drake — Mirror Water</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/cormorant-drying-wings.jpg?v=1781839276" alt="Cormorant with wings spread on driftwood" loading="lazy">
+        <div class="overlay"><h3>Cormorant — Drying the Wings</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/coyote-pup-den.jpg?v=1781839296" alt="Coyote pup peeking out from its den in the grass" loading="lazy">
+        <div class="overlay"><h3>At the Den's Edge — Coyote Pup</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/golden-hour-sentinels-dusk.jpg?v=1781898038" alt="Golden sunset with tree silhouette against hazy amber sky" loading="lazy">
+        <div class="overlay"><h3>Golden Hour — Sentinels at Dusk</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/mist-on-the-water-first-light.jpg?v=1781898148" alt="Misty lake at golden hour with duck in flight and bare branch reflections" loading="lazy" style="opacity:0.5">
+        <div class="overlay"><h3>Mist on the Water — First Light</h3><span>Nature &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="nature">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/f4c87bc7452fa2dee38757c70a3e5e79_78b69621-4594-4555-8f68-f5ac3dc53c28.jpg?v=1781900413" alt="Chicago Harbor at golden hour with red sailboat, ducks in foreground, Willis Tower skyline" loading="lazy">
+        <div class="overlay"><h3>Harbor Calm — Chicago Skyline</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <!-- CHICAGO & GREAT LAKES -->
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/chicago-harbor-calm-day.jpg?v=1781835801" alt="Chicago harbor lighthouse on a calm overcast day" loading="lazy">
+        <div class="overlay"><h3>Chicago Harbor — Calm Day</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/chicago-skyline-breakwater.jpg?v=1781836232" alt="Chicago skyline from the rocky breakwater" loading="lazy">
+        <div class="overlay"><h3>Chicago Skyline — From the Breakwater</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/marina-calm-chicago.jpg?v=1781836696" alt="Sailboat marina with Chicago skyline in the distance" loading="lazy">
+        <div class="overlay"><h3>Marina Calm — Chicago Skyline</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/chicago-at-night-rooftop.jpg?v=1781837845" alt="Chicago skyline at night from a rooftop with Lake Shore Drive light trails" loading="lazy">
+        <div class="overlay"><h3>Chicago at Night — From the Rooftop</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/lsd-northbound-night.jpg?v=1781837916" alt="Lake Shore Drive traffic trails at night with Grant Park and skyline" loading="lazy">
+        <div class="overlay"><h3>Lake Shore Drive — Northbound at Night</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/blue-hour-chicago-skyline.jpg?v=1781838012" alt="Chicago skyline at blue hour with Willis Tower and BP Bridge" loading="lazy">
+        <div class="overlay"><h3>Blue Hour — Chicago Skyline</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="chicago">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wrigley-building-night.jpg?v=1781838071" alt="Wrigley Building clock tower at night with Michigan Avenue traffic" loading="lazy">
+        <div class="overlay"><h3>Wrigley Building — Michigan Avenue at Night</h3><span>Chicago &bull; Fine Art Print</span></div>
+      </div>
+
+      <!-- SPORTS -->
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/little-league-baseball-action.jpg?v=1781824634" alt="Little league baseball player mid-swing on a cloudy day" loading="lazy">
+        <div class="overlay"><h3>Little League — Game Day</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/lacrosse-game-action-lincoln-way.jpg?v=1781898769" alt="Lincoln-Way lacrosse player in black jersey yelling during game" loading="lazy">
+        <div class="overlay"><h3>Lincoln-Way Lacrosse — Game Day</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/michigan-lacrosse-action-sunny.jpg?v=1781898879" alt="Michigan Wolverines lacrosse player in yellow jumping with ball during game" loading="lazy">
+        <div class="overlay"><h3>Michigan Wolverines — Lacrosse Action</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/1114fef9a8b604f3e1518b6e341cce78.jpg?v=1781899888" alt="Lincoln-Way lacrosse player #21 with pink cleats cradling ball vs navy defender" loading="lazy">
+        <div class="overlay"><h3>Lincoln-Way Lacrosse — Pink Cleats</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/f85e057d79a157d5a92715bbdab03fab.jpg?v=1781899307" alt="Manhattan wrestler in white singlet roaring during match" loading="lazy">
+        <div class="overlay"><h3>Manhattan Wrestling — Match Day</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/897b4ad1d23dcf8d9708cb13e0895a3f.jpg?v=1781899524" alt="Nolan Thorpe at state wrestling tournament, NIU Convocation Center — leopard-print hair, Demons singlet" loading="lazy">
+        <div class="overlay"><h3>Nolan Thorpe — State 3rd Place, NIU</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/dcf56856bf2422c2c4bc88accf8fd2ea.jpg?v=1781899737" alt="Softball player in black GO PRO jersey walking baseline, pink goggles" loading="lazy">
+        <div class="overlay"><h3>Softball — GO PRO #22</h3><span>Sports &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="sports">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wapanesse-trail-bridge.jpg?v=1781838126" alt="Sunlit path leading to a wooden bridge on Wapanesse Trail" loading="lazy">
+        <div class="overlay"><h3>Wapanesse Trail — The Bridge</h3><span>Nature &bull; Fine Art Print</span></div>
+      </div>
+
+      <!-- PORTRAITS -->
+      <div class="gallery-item" data-category="portraits">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/engagement-session-summer-field.jpg?v=1781840323" alt="Young couple embracing in a sunny field — she in white lace dress and cowboy boots, he in striped shirt" loading="lazy">
+        <div class="overlay"><h3>Engagement Session — Summer Field</h3><span>Portraits &bull; Fine Art Print</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="portraits">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/portrait-couple-formal-park.jpg?v=1781875677" alt="Formal couple portrait in park with matching blue tones" loading="lazy">
+        <div class="overlay"><h3>Prom — Blue Elegance</h3><span>Portraits &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="portraits">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/portrait-couple-yellow-gown-tux.jpg?v=1781875797" alt="Couple in yellow gown and black tuxedo with bouquet in formal garden" loading="lazy">
+        <div class="overlay"><h3>Formal — Yellow Rose</h3><span>Portraits &bull; Digital Download</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="portraits">
+        <div class="placeholder-card">
+          <div class="icon">👤</div>
+          <h4>Headshots</h4>
+          <p>Coming soon — professional and personal branding</p>
+        </div>
+      </div>
+
+      <!-- WEDDINGS -->
+      <div class="gallery-item" data-category="weddings">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/wedding-couple-fairy-lights.jpg?v=1781840767" alt="Bride and groom in intimate close-up with fairy lights and lantern in background" loading="lazy">
+        <div class="overlay"><h3>Wedding — Fairy Lights</h3><span>Weddings &bull; Evening ceremony</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="weddings">
+        <div class="placeholder-card">
+          <div class="icon">💍</div>
+          <h4>Wedding Gallery</h4>
+          <p>More wedding work coming soon</p>
+        </div>
+      </div>
+
+      <!-- FORMAL / PROM -->
+      <div class="gallery-item" data-category="formal">
+        <img src="https://cdn.shopify.com/s/files/1/0669/7703/8470/files/prom-couple-portrait.jpg?v=1781869520" alt="Couple dressed for prom with warm golden backlight in evening" loading="lazy">
+        <div class="overlay"><h3>Prom — Golden Hour</h3><span>Formal &bull; Digital Download</span></div>
+      </div>
+
+    </div>
+
+    <div class="gallery-empty" aria-live="polite">No images match this category yet. Check back soon!</div>
+  </div>
+</section>
+
+<!-- ========== SHOP CTA ========== -->
+<section class="shop-cta reveal" id="shop">
+  <div class="section-inner">
+    <p class="section-label" style="color:#c8b89a;">Shop</p>
+    <h2 class="display-large">Browse the print store</h2>
+    <p>Every image in the portfolio is available as a fine art print or digital download. Shop by collection — Nature, Chicago, Sports — and bring the work home.</p>
+    <a href="https://ifyp0g-1s.myshopify.com/" class="btn btn-primary" target="_blank">Visit the Store</a>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Contact</p>
+      <h2 class="display-large">Let's work together</h2>
+      <p class="section-sub">Available for sessions, events, and commercial work throughout the Chicago area.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p>billthorpephotography@gmail.com</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p>815-582-6692</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div>
+          <h4>Location</h4>
+          <p>Manhattan, Illinois 60442</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">🛒</div>
+        <div>
+          <h4>Store</h4>
+          <p>ifyp0g-1s.myshopify.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer" role="contentinfo">
+  <p>&copy; 2026 Bill Thorpe Photography LLC — Manhattan, IL. All rights reserved.</p>
+</footer>
+
+<!-- ========== LIGHTBOX ========== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" aria-label="Close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous image" onclick="navigateLightbox(-1)">←</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next image" onclick="navigateLightbox(1)">→</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+// ========== CATEGORY FILTER ==========
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const emptyMsg = document.querySelector('.gallery-empty');
+const counts = {};
+
+galleryItems.forEach(item => {
+  const cat = item.dataset.category;
+  counts[cat] = (counts[cat] || 0) + 1;
+});
+counts['all'] = Object.values(counts).reduce((a,b) => a+b, 0);
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    const filter = btn.dataset.filter;
+    let visible = 0;
+    galleryItems.forEach(item => {
+      if (filter === 'all' || item.dataset.category === filter) {
+        item.classList.remove('hidden');
+        visible++;
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+    emptyMsg.classList.toggle('visible', visible === 0);
+  });
+});
+
+// ========== LIGHTBOX ==========
+let currentImages = [];
+let currentIndex = 0;
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+const lbCaption = document.getElementById('lightbox-caption');
+let touchStartX = 0;
+
+function openLightbox(index, images) {
+  currentImages = images;
+  currentIndex = index;
+  showImage();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showImage() {
+  const item = currentImages[currentIndex];
+  const img = item.querySelector('img');
+  const title = item.querySelector('.overlay h3')?.textContent || 'Bill Thorpe Photography';
+  const cat = item.querySelector('.overlay span')?.textContent || '';
+  lbImg.src = img ? img.src : '';
+  lbImg.alt = img ? img.alt : '';
+  lbCaption.textContent = title + (cat ? ' — ' + cat : '');
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navigateLightbox(dir) {
+  currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length;
+  showImage();
+}
+
+// Click on gallery items
+galleryItems.forEach((item, idx) => {
+  const img = item.querySelector('img');
+  if (img) {
+    item.addEventListener('click', () => {
+      const visibleItems = Array.from(galleryItems).filter(i => !i.classList.contains('hidden'));
+      const images = visibleItems.filter(i => i.querySelector('img'));
+      const clickIdx = images.indexOf(item);
+      if (clickIdx >= 0) openLightbox(clickIdx, images);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') item.click();
+    });
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+  }
+});
+
+// Keyboard for lightbox
+document.addEventListener('keydown', (e) => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'ArrowRight') navigateLightbox(1);
+});
+
+// Touch swipe for lightbox
+lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) navigateLightbox(diff > 0 ? 1 : -1);
+}, { passive: true });
+
+// Close on backdrop click
+lb.addEventListener('click', (e) => {
+  if (e.target === lb) closeLightbox();
+});
+
+// ========== SMOOTH SCROLL ==========
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+      // Close mobile nav
+      document.querySelector('.header-nav')?.classList.remove('open');
+    }
+  });
+});
+
+// ========== SCROLL REVEAL ==========
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ========== HEADER SCROLL STATE ==========
+let ticking = false;
+document.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// ========== ACTIVE NAV LINK ==========
+const navLinks = document.querySelectorAll('.header-nav a:not(.header-cta)');
+const sections = document.querySelectorAll('section[id]');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
+sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
