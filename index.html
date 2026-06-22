@@ -269,6 +269,38 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
 /* ========== SECTION DIVIDER ========== */
 .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-light), transparent); max-width: 200px; margin: 0 auto; border: none; }
 
+/* ========== BRASS BOOT STUDIO ========== */
+:root { --accent-music: #c8913e; --accent-music-dim: #a07020; --bg-music: #14110e; }
+.section-music { background: var(--bg-music); }
+.section-music .section-label { color: var(--accent-music); }
+.music-header { text-align: center; margin-bottom: 3rem; }
+.music-header h2 { color: var(--text); }
+.music-header p { color: var(--text-muted); max-width: 600px; margin: 0.75rem auto 0; }
+.music-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+.music-card {
+  background: #1a1612; border: 1px solid #2a2420; border-radius: var(--radius-md);
+  padding: 2rem; transition: all var(--transition); text-align: center;
+  position: relative; overflow: hidden;
+}
+.music-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent-music); transform: scaleX(0); transform-origin: left; transition: transform var(--transition-spring); }
+.music-card:hover { border-color: #3a3028; transform: translateY(-4px); }
+.music-card:hover::before { transform: scaleX(1); }
+.music-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+.music-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+.music-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+.music-card .tag { display: inline-block; margin-top: 1rem; font-size: 0.75rem; color: var(--accent-music); font-weight: 600; letter-spacing: 0.05em; }
+.music-gear {
+  display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+  margin-top: 2rem; padding: 1.5rem; background: #1a1612; border: 1px solid #2a2420;
+  border-radius: var(--radius-md);
+}
+.music-gear span {
+  font-size: 0.75rem; color: var(--text-light); background: rgba(200,145,62,0.06);
+  padding: 0.4rem 0.9rem; border-radius: 100px; border: 1px solid rgba(200,145,62,0.1);
+  font-weight: 500;
+}
+.music-gear .label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-music-dim); font-weight: 600; margin-right: 0.25rem; }
+
 /* ========== LIGHTBOX ========== */
 .lightbox {
   position: fixed; inset: 0; z-index: 200;
@@ -360,6 +392,7 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
     <a href="#" class="header-logo">Bill Thorpe <span>Photography</span></a>
     <nav class="header-nav" role="navigation" aria-label="Main navigation">
       <a href="#services">Services</a>
+      <a href="#studio">Studio</a>
       <a href="#about">About</a>
       <a href="#gallery">Portfolio</a>
       <a href="#shop">Shop</a>
@@ -443,6 +476,48 @@ h1, h2, h3, .display, .section-label { font-family: 'Playfair Display', Georgia,
         <p>Short-form video, event highlight reels, and content packages. Available as stand-alone or photo bundle add-on.</p>
         <p class="price">From $60/hr</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BRASS BOOT STUDIO ========== -->
+<section class="section section-music reveal" id="studio" style="padding-bottom:3rem;">
+  <div class="section-inner">
+    <div class="music-header">
+      <p class="section-label">Brass Boot Studio</p>
+      <h2 class="display-large">Recording &amp; Production</h2>
+      <p>Full-service recording studio based in Manhattan, IL — tracking, mixing, production, and session work. All sessions in-studio only.</p>
+    </div>
+    <div class="music-grid">
+      <div class="music-card">
+        <div class="icon">🎙️</div>
+        <h3>Podcast Recording</h3>
+        <p>Clean, broadcast-quality podcast and voiceover recording. SM7B through Apollo Twin X — professional capture, fast turnaround.</p>
+        <span class="tag">In-studio only</span>
+      </div>
+      <div class="music-card">
+        <div class="icon">🎸</div>
+        <h3>Artist Recording</h3>
+        <p>Track vocals, electric and acoustic guitar, bass, piano, drums, and violin. Full signal chain with Ableton production environment.</p>
+        <span class="tag">In-studio only</span>
+      </div>
+      <div class="music-card">
+        <div class="icon">🎧</div>
+        <h3>Editing &amp; Production</h3>
+        <p>Mixing, editing, beat-making, and full production from raw tracks to mastered release. Demo polishing or album-ready production.</p>
+        <span class="tag">Contact for rates</span>
+      </div>
+      <div class="music-card">
+        <div class="icon">🎵</div>
+        <h3>Session Musician</h3>
+        <p>Studio guitar work for your project — lead, rhythm, acoustic, and bass. Telecaster through a Stage 100G. Available for tracking sessions.</p>
+        <span class="tag">Guitar · Bass</span>
+      </div>
+    </div>
+    <div class="music-gear">
+      <span><span class="label">Signal Chain</span> Apollo Twin X · SM7B · Adam A7V</span>
+      <span><span class="label">Instruments</span> Telecaster · Stage 100G · Bass · Piano · Drums · Violin</span>
+      <span><span class="label">DAW</span> Ableton Live</span>
     </div>
   </div>
 </section>
