@@ -12,6 +12,8 @@
     --ink: #15110d;
     --paper: #faf7f0;
     --warm: #ece5d6;
+    --sand: #f0ede6;
+    --tan: #e8e1d2;
     --muted: #6b6558;
     --line: #d4cfc4;
     --accent: #8b6f47;
@@ -66,12 +68,16 @@
   }
 
   /* ========== STRIP ========== */
+  .strip-wrap {
+    background: var(--sand);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
   .strip {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 0.4rem;
     padding: 3rem 0;
-    border-bottom: 1px solid var(--line);
     align-items: end;
   }
   .strip figure { margin: 0; }
@@ -101,7 +107,7 @@
   /* ========== ABOUT ========== */
   .about {
     padding: 3rem 0;
-    border-bottom: 1px solid var(--line);
+    background: var(--paper);
   }
   .about p {
     font-size: 1.0625rem;
@@ -113,6 +119,8 @@
   /* ========== CLIENT EXAMPLES ========== */
   .examples {
     padding: 3rem 0;
+    background: var(--tan);
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
   .examples-label {
@@ -156,6 +164,8 @@
   /* ========== CONTACT ========== */
   .contact {
     padding: 3rem 0 4rem;
+    background: var(--sand);
+    border-top: 1px solid var(--line);
   }
   .contact-label {
     font-size: 0.75rem;
@@ -232,8 +242,9 @@
   </div>
 </header>
 
-<section class="wrap" aria-label="Selected work">
-  <div class="strip">
+<section class="strip-wrap" aria-label="Selected work">
+  <div class="wrap">
+    <div class="strip">
     <figure>
       <img src="assets/sports-lacrosse-01.jpg" alt="Lacrosse goal-line save at Lincoln-Way" loading="lazy" width="225" height="225">
       <figcaption>Sports</figcaption>
@@ -262,6 +273,7 @@
       <img src="assets/about-bill-forest-portrait.jpg" alt="Bill Thorpe, photographer, in the forest" loading="lazy" width="364" height="546">
       <figcaption>Bill</figcaption>
     </figure>
+    </div>
   </div>
 </section>
 
