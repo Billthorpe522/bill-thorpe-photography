@@ -55,6 +55,19 @@
     font-size: 1.125rem;
     color: var(--muted);
   }
+  .hero-tagline {
+    font-family: Georgia, serif;
+    font-size: 0.9375rem;
+    color: var(--accent);
+    margin-top: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-tagline a {
+    color: var(--accent);
+    border-bottom: 1px dotted var(--accent);
+    padding-bottom: 2px;
+  }
+  .hero-tagline a:hover { text-decoration: none; opacity: 0.75; }
 
   /* ========== STRIP ========== */
   .strip {
@@ -218,7 +231,8 @@
 <header class="hero">
   <div class="wrap">
     <h1 class="hero-name">Bill Thorpe</h1>
-    <p class="hero-tag">Photographer.</p>
+    <p class="hero-tag">Photographer. Builder. Curious.</p>
+    <p class="hero-tagline"><a href="#client-examples">What do you do?</a></p>
   </div>
 </header>
 
@@ -260,7 +274,7 @@
   <p>Prints, game-day coverage, and event work by request.</p>
 </section>
 
-<section class="examples wrap" aria-label="Client examples">
+<section class="examples wrap" id="client-examples" aria-label="Client examples">
   <div class="examples-label">Client examples</div>
   <div class="examples-grid">
     <div class="example">
