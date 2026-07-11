@@ -59,19 +59,27 @@
   /* ========== STRIP ========== */
   .strip {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 0.75rem;
     padding: 3rem 0;
     border-bottom: 1px solid var(--line);
+    align-items: end;
   }
   .strip figure { margin: 0; }
   .strip img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     object-fit: cover;
     border-radius: 2px;
     filter: saturate(0.95);
   }
+  .strip figure.sq img { aspect-ratio: 4 / 3; }
+  .strip figure.portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .strip figure.portrait img { aspect-ratio: 2 / 3; }
   .strip figcaption {
     font-size: 0.7rem;
     color: var(--muted);
@@ -179,8 +187,8 @@
       <img src="assets/lighthouse-breakwater.jpg" alt="Lighthouse on Lake Michigan breakwater at dusk" loading="lazy" width="225" height="225">
       <figcaption>Land &amp; Water</figcaption>
     </figure>
-    <figure>
-      <img src="assets/about-bill-forest.jpg" alt="Bill Thorpe, photographer, in the forest" loading="lazy" width="225" height="225">
+    <figure class="portrait">
+      <img src="assets/about-bill-forest-portrait.jpg" alt="Bill Thorpe, photographer, in the forest" loading="lazy" width="364" height="546">
       <figcaption>Bill</figcaption>
     </figure>
   </div>
