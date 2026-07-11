@@ -59,8 +59,8 @@
   /* ========== STRIP ========== */
   .strip {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.4rem;
     padding: 3rem 0;
     border-bottom: 1px solid var(--line);
     align-items: end;
@@ -203,8 +203,8 @@
   }
 
   @media (max-width: 560px) {
-    .strip { grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
-    .strip figure.portrait { grid-column: 2 / 3; max-width: 100%; margin: 0 auto; }
+    .strip { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .strip figure.portrait { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
     .strip img { aspect-ratio: 4 / 3; }
     .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .qr { margin: 0 auto; }
@@ -243,6 +243,10 @@
     <figure>
       <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy" width="225" height="225">
       <figcaption>Weddings</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/astronaut-product.jpg" alt="Astronaut bobblehead with rocket nosecones and medallions, product photography" loading="lazy" width="225" height="225">
+      <figcaption>Product</figcaption>
     </figure>
     <figure class="portrait">
       <img src="assets/about-bill-forest-portrait.jpg" alt="Bill Thorpe, photographer, in the forest" loading="lazy" width="364" height="546">
