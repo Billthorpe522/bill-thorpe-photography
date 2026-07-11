@@ -59,7 +59,7 @@
   /* ========== STRIP ========== */
   .strip {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 0.5rem;
     padding: 3rem 0;
     border-bottom: 1px solid var(--line);
@@ -203,8 +203,8 @@
   }
 
   @media (max-width: 560px) {
-    .strip { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-    .strip figure.portrait { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+    .strip { grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+    .strip figure.portrait { grid-column: 2 / 3; max-width: 100%; margin: 0 auto; }
     .strip img { aspect-ratio: 4 / 3; }
     .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .qr { margin: 0 auto; }
@@ -227,6 +227,10 @@
     <figure>
       <img src="assets/sports-lacrosse-01.jpg" alt="Lacrosse goal-line save at Lincoln-Way" loading="lazy" width="225" height="225">
       <figcaption>Sports</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/kayak.jpg" alt="Two paddlers in an inflatable kayak on a calm river, rear view" loading="lazy" width="225" height="225">
+      <figcaption>Outdoors</figcaption>
     </figure>
     <figure>
       <img src="assets/birdstone.jpg" alt="Polished banded slate birdstone with a larger tan birdstone, artifact photography" loading="lazy" width="225" height="225">
