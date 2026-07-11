@@ -101,6 +101,49 @@
   }
   .about p + p { margin-top: 0.875rem; }
 
+  /* ========== CLIENT EXAMPLES ========== */
+  .examples {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .examples-label {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .example {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .example-title {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .example-desc {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .example a {
+    color: var(--accent);
+    border-bottom: 1px dotted var(--line);
+    padding-bottom: 1px;
+    font-size: 0.8125rem;
+    align-self: flex-start;
+  }
+  .example a:hover { border-bottom-color: var(--accent); text-decoration: none; }
+
   /* ========== CONTACT ========== */
   .contact {
     padding: 3rem 0 4rem;
@@ -165,6 +208,7 @@
     .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .qr { margin: 0 auto; }
     .qr-cap { text-align: center; }
+    .examples-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>
 </head>
@@ -199,6 +243,27 @@
   <p>Prints, game-day coverage, and event work by request.</p>
 </section>
 
+<section class="examples wrap" aria-label="Client examples">
+  <div class="examples-label">Client examples</div>
+  <div class="examples-grid">
+    <div class="example">
+      <div class="example-title">Starved Rock 2026</div>
+      <div class="example-desc">23rd Annual Native American Artifact Show, Utica IL. Coverage, marketing site, and on-site vendor announcement for the show host.</div>
+      <a href="https://billthorpe522.github.io/starved-rock-2026/" rel="noopener">View site &rarr;</a>
+    </div>
+    <div class="example">
+      <div class="example-title">The Usual Suspects</div>
+      <div class="example-desc">Chicago-south-suburb rock band. Brand site, gig calendar, and social photography. I play guitar in the band.</div>
+      <a href="https://playtheusualsuspects.com" rel="noopener">View site &rarr;</a>
+    </div>
+    <div class="example">
+      <div class="example-title">Barn Burner Relics</div>
+      <div class="example-desc">Static marketing site for a Native American artifact dealer. Dark editorial layout, product photography, and channel integration.</div>
+      <a href="https://billthorpe522.github.io/barn-burner-relics/" rel="noopener">View repo &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <section class="contact wrap" id="contact" aria-label="Contact">
   <div class="contact-label">Get in touch</div>
   <div class="contact-grid">
@@ -208,9 +273,6 @@
         <li><b>Email</b> <a href="mailto:billthorpephotography@gmail.com">billthorpephotography@gmail.com</a></li>
         <li><b>Phone</b> <a href="tel:+18155826692">(815) 582-6692</a></li>
         <li><b>Web</b> <a href="https://billthorpephotography.com">billthorpephotography.com</a></li>
-        <li><b>Studio</b> 16357 W Pinto Lane, Manhattan, IL</li>
-        <li><b>Show</b> <a href="https://billthorpe522.github.io/starved-rock-2026/" rel="noopener">23rd Annual Starved Rock Artifact Show &middot; Jul 12</a></li>
-        <li><b>Band</b> <a href="https://playtheusualsuspects.com" rel="noopener">The Usual Suspects &rarr;</a></li>
       </ul>
     </div>
     <div>
