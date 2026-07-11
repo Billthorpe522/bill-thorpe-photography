@@ -59,8 +59,8 @@
   /* ========== STRIP ========== */
   .strip {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.75rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
     padding: 3rem 0;
     border-bottom: 1px solid var(--line);
     align-items: end;
@@ -203,8 +203,9 @@
   }
 
   @media (max-width: 560px) {
-    .strip { grid-template-columns: 1fr; gap: 1.25rem; }
-    .strip img { aspect-ratio: 16 / 10; }
+    .strip { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .strip figure.portrait { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+    .strip img { aspect-ratio: 4 / 3; }
     .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .qr { margin: 0 auto; }
     .qr-cap { text-align: center; }
@@ -230,6 +231,14 @@
     <figure>
       <img src="assets/lighthouse-breakwater.jpg" alt="Lighthouse on Lake Michigan breakwater at dusk" loading="lazy" width="225" height="225">
       <figcaption>Land &amp; Water</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/two-men-portrait.jpg" alt="Two men smiling at an outdoor event" loading="lazy" width="225" height="225">
+      <figcaption>People</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy" width="225" height="225">
+      <figcaption>Weddings</figcaption>
     </figure>
     <figure class="portrait">
       <img src="assets/about-bill-forest-portrait.jpg" alt="Bill Thorpe, photographer, in the forest" loading="lazy" width="364" height="546">
