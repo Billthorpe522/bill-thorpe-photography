@@ -330,10 +330,12 @@
   }
   @media (max-width: 720px) {
     .sports-story { grid-template-columns: 1fr; }
-    .sports-row { grid-template-columns: 1fr 1fr; }
+    .sports-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .sports-row figure { aspect-ratio: 16 / 10; }
   }
   @media (max-width: 480px) {
-    .sports-row { grid-template-columns: 1fr; }
+    .sports-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .sports-row figure { aspect-ratio: 16 / 10; }
   }
 
   /* ========== PROM / FORMAL ========== */
