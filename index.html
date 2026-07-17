@@ -200,6 +200,58 @@
     margin: 0;
   }
 
+  /* ========== SPORTS — CROWN MOMENTS DUO ========== */
+  .sports-crowns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .sports-crown {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--sand);
+    border-radius: 2px;
+    position: relative;
+  }
+  .sports-crown img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .sports-crown:hover img { transform: scale(1.02); }
+  .sports-crown figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.25rem 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.2) 70%, transparent);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .crown-label {
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+  .crown-meta {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    opacity: 0.78;
+  }
+  @media (max-width: 720px) {
+    .sports-crowns { grid-template-columns: 1fr; }
+  }
+
   /* ========== SPORTS GRID (3-beat) ========== */
   .sports-story {
     display: grid;
@@ -332,17 +384,18 @@
     .prom-grid figure.wide { grid-column: span 1; }
   }
 
-  /* ========== ALSO SHOOTS STRIP ========== */
+  /* ========== ALSO SHOOTS ========== */
   .also-strip {
     background: var(--tan);
+    padding: 6rem 0;
   }
   .also-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
   }
   .also-tile {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     border-radius: 2px;
     position: relative;
@@ -353,21 +406,40 @@
     height: 100%;
     object-fit: cover;
     filter: saturate(0.92);
+    transition: transform 0.4s ease;
   }
+  .also-tile:hover img { transform: scale(1.04); }
   .also-label {
     position: absolute;
     inset: auto 0 0 0;
-    padding: 1.5rem 0.75rem 0.625rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 2.5rem 0.875rem 0.875rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.25) 65%, transparent);
     color: #fff;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .also-cat {
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+  }
+  .also-sub {
     font-size: 0.6875rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    opacity: 0.78;
   }
-  @media (max-width: 720px) {
-    .also-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 960px) {
+    .also-grid { grid-template-columns: repeat(3, 1fr); }
+    .also-tile { aspect-ratio: 4 / 5; }
+  }
+  @media (max-width: 560px) {
+    .also-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* ========== BOOKING ========== */
@@ -533,8 +605,8 @@
 <header class="hero" id="top">
   <div class="wrap-narrow">
     <h1 class="hero-name">Bill Thorpe</h1>
-    <p class="hero-tagline">Game-day. Prom. Senior. Headshots.</p>
-    <p class="hero-sub">Manhattan, Illinois &middot; Chicago&rsquo;s south suburbs &middot; prints, event work, and the occasional artifact by request.</p>
+    <p class="hero-tagline">The moment that matters, in any setting.</p>
+    <p class="hero-sub">Game-day. Prom. Senior. Headshots. Manhattan, Illinois &middot; Chicago&rsquo;s south suburbs &middot; prints, event work, and the occasional artifact by request.</p>
     <div class="hero-ctas">
       <a href="#book" class="btn">Book a session</a>
       <a href="#sports" class="btn btn-ghost">See the work</a>
@@ -551,42 +623,61 @@
     <h2 class="section-title">Sports</h2>
     <p class="section-desc">Action, reaction, and the moment that matters. Game-day coverage across Illinois — youth, high school, and travel ball. Lincoln-Way media pass. State championships.</p>
 
-    <!-- Beat 1: Crown moment — championship team -->
-    <div class="sports-story">
-      <figure class="sports-story-main">
-        <img src="assets/sports-lacrosse-03-state-champs-2024.jpg"
-             alt="Lincoln-Way lacrosse team celebrates 2024 IHSA State Championship, 13-5 final" loading="lazy">
+    <!-- Beat 1: Crown Moments duo — both NIU, both team-with-trophy -->
+    <div class="sports-crowns">
+      <figure class="sports-crown">
+        <img src="assets/sports-lacrosse-03-sectional-2024.jpg"
+             alt="Lincoln-Way lacrosse team celebrates Sectional Championship win at NIU Convocation Center, 13-5 final" loading="lazy">
+        <figcaption>
+          <span class="crown-label">Lacrosse &middot; Sectional Champions</span>
+          <span class="crown-meta">NIU Convocation Center &middot; 2024</span>
+        </figcaption>
       </figure>
-      <div class="sports-stack">
-        <figure>
-          <img src="assets/sports-lacrosse-02-celebration.jpg"
-               alt="Lincoln-Sudbury #17 gives thumbs-up in celebration" loading="lazy">
-          <figcaption class="sports-caption">Reaction</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/sports-lacrosse-01.jpg"
-               alt="Lincoln-Way #19 winds up for a shot on goal" loading="lazy">
-          <figcaption class="sports-caption">Action</figcaption>
-        </figure>
-      </div>
+      <figure class="sports-crown">
+        <img src="assets/sports-wrestling-01-iesa-2026-runner-up.jpg"
+             alt="Wrestling team holds IESA 2026 State Runner-Up trophy at NIU Convocation Center" loading="lazy">
+        <figcaption>
+          <span class="crown-label">Wrestling &middot; IESA State Runner-Up</span>
+          <span class="crown-meta">NIU Convocation Center &middot; 2026</span>
+        </figcaption>
+      </figure>
     </div>
 
-    <!-- Beat 2: Baseball -->
+    <!-- Beat 2: Action triptych — different sports, all mid-motion -->
     <div class="sports-row">
+      <figure>
+        <img src="assets/sports-lacrosse-01.jpg"
+             alt="Lincoln-Way #19 winds up for a shot on goal" loading="lazy">
+        <figcaption>Lacrosse &middot; Action</figcaption>
+      </figure>
       <figure>
         <img src="assets/sports-baseball-brennan-01.jpg"
              alt="Brennan #99 mid-swing with ball visible" loading="lazy">
-        <figcaption>Brennan · HS</figcaption>
+        <figcaption>Baseball &middot; HS</figcaption>
       </figure>
       <figure>
-        <img src="assets/sports-baseball-02-youth-swing.jpg"
-             alt="Youth baseball #12 swings, coach watches" loading="lazy">
-        <figcaption>Youth</figcaption>
+        <img src="assets/sports-softball-01-pitcher.jpg"
+             alt="Female softball pitcher in mid-throw, follow-through" loading="lazy">
+        <figcaption>Softball &middot; Pitch</figcaption>
+      </figure>
+    </div>
+
+    <!-- Beat 3: Range — youth + travel + setting -->
+    <div class="sports-row">
+      <figure>
+        <img src="assets/sports-baseball-05-youth-running.jpg"
+             alt="Youth baseball #23 running, bat flying mid-air" loading="lazy">
+        <figcaption>Youth &middot; Base hit</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/sports-baseball-06-rebels-pitcher.jpg"
+             alt="Rebels #50 pitcher mid-windup" loading="lazy">
+        <figcaption>Travel &middot; Pitcher</figcaption>
       </figure>
       <figure>
         <img src="assets/sports-baseball-03-joliet-team-portrait.jpg"
              alt="Joliet youth baseball team portrait at old Joliet Correctional Center, golden hour" loading="lazy">
-        <figcaption>Joliet · Team</figcaption>
+        <figcaption>Team &middot; Golden hour</figcaption>
       </figure>
     </div>
   </div>
@@ -651,24 +742,43 @@
 <section id="also" class="also-strip">
   <div class="wrap">
     <div class="section-label">ALSO</div>
-    <h2 class="section-title">Also shoots</h2>
-    <p class="section-desc">Outdoors, weddings, products, and the occasional artifact.</p>
+    <h2 class="section-title">Same photographer. Different subjects.</h2>
+    <p class="section-desc">Outdoors, weddings, products, and the occasional artifact. The eye doesn&rsquo;t switch off when the assignment changes.</p>
     <div class="also-grid">
       <a href="#also" class="also-tile">
-        <img src="assets/kayak.jpg" alt="Two paddlers in an inflatable kayak on a calm river" loading="lazy">
-        <div class="also-label">Outdoors</div>
+        <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy">
+        <div class="also-label">
+          <span class="also-cat">Weddings</span>
+          <span class="also-sub">Connection, candid, golden hour</span>
+        </div>
       </a>
       <a href="#also" class="also-tile">
-        <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy">
-        <div class="also-label">Weddings</div>
+        <img src="assets/kayak.jpg" alt="Two paddlers in an inflatable kayak on a calm river" loading="lazy">
+        <div class="also-label">
+          <span class="also-cat">Outdoors</span>
+          <span class="also-sub">Landscape, nature, light</span>
+        </div>
       </a>
       <a href="#also" class="also-tile">
         <img src="assets/birdstone.jpg" alt="Polished banded slate birdstone, artifact photography" loading="lazy">
-        <div class="also-label">Artifacts</div>
+        <div class="also-label">
+          <span class="also-cat">Artifacts</span>
+          <span class="also-sub">Detail, texture, provenance</span>
+        </div>
       </a>
       <a href="#also" class="also-tile">
         <img src="assets/astronaut-product.jpg" alt="Astronaut bobblehead with rocket nosecones, product photography" loading="lazy">
-        <div class="also-label">Products</div>
+        <div class="also-label">
+          <span class="also-cat">Products</span>
+          <span class="also-sub">Branded, controlled, clean</span>
+        </div>
+      </a>
+      <a href="#also" class="also-tile">
+        <img src="assets/couples-01-field-cowboy-boots.jpg" alt="Young couple embracing in a grassy field, cowboy boots" loading="lazy">
+        <div class="also-label">
+          <span class="also-cat">Couples</span>
+          <span class="also-sub">Engagement, anniversary</span>
+        </div>
       </a>
     </div>
   </div>
