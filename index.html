@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bill Thorpe — Photographer. Manhattan, IL and Chicago South Suburbs.">
+<meta name="description" content="Bill Thorpe — Photographer. Manhattan, IL and Chicago South Suburbs. Sports, prom, senior portraits, headshots, and more.">
 <title>Bill Thorpe · Photographer</title>
 <link rel="canonical" href="https://billthorpephotography.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -17,10 +20,13 @@
     --muted: #6b6558;
     --line: #d4cfc4;
     --accent: #8b6f47;
+    --accent-dark: #6d563a;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
   html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+    font-family: var(--sans);
     color: var(--ink);
     background: var(--paper);
     line-height: 1.55;
@@ -29,298 +35,760 @@
   }
   ::selection { background: var(--accent); color: #fff; }
   img { display: block; max-width: 100%; height: auto; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a { color: var(--accent); text-decoration: none; transition: color 0.15s ease; }
+  a:hover { color: var(--accent-dark); }
 
   .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .wrap-narrow {
     max-width: 760px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
 
-  /* ========== HERO ========== */
-  .hero {
-    padding: 5rem 0 3rem;
+  /* ========== NAV ========== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--line);
   }
-  .hero-name {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(2.5rem, 7vw, 4rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 0.5rem;
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 0;
   }
-  .hero-tag {
-    font-family: Georgia, serif;
-    font-style: italic;
+  .nav-logo {
+    font-family: var(--serif);
     font-size: 1.125rem;
-    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
-  .hero-tagline {
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 0.9375rem;
-    color: var(--muted);
-    margin-top: 1.25rem;
-    letter-spacing: 0.01em;
-    max-width: 32em;
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .nav-links a {
+    color: var(--ink);
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    color: var(--accent) !important;
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .nav-links { gap: 1rem; font-size: 0.8125rem; }
+    .nav-links li:nth-child(n+5) { display: none; }
+  }
+  @media (max-width: 480px) {
+    .nav-links { gap: 0.75rem; font-size: 0.75rem; }
+    .nav-links li:nth-child(n+4) { display: none; }
   }
 
-  /* ========== STRIP ========== */
-  .strip-wrap {
-    background: var(--sand);
+  /* ========== HERO ========== */
+  .hero {
+    padding: 7rem 0 5rem;
+    background: var(--paper);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  .hero-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    max-width: 22em;
+  }
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 1.5rem;
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    transition: all 0.15s ease;
+  }
+  .btn:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--ink);
+    background: transparent;
+    color: var(--ink);
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 4rem 0 3rem; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .btn { text-align: center; }
+  }
+
+  /* ========== SECTION ========== */
+  section { padding: 5rem 0; }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.875rem, 4vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+  .section-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 42em;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .section-divider {
+    border: 0;
     border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    margin: 0;
   }
-  .strip {
+
+  /* ========== SPORTS GRID (3-beat) ========== */
+  .sports-story {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 0.4rem;
-    padding: 3rem 0;
-    align-items: end;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
-  .strip figure { margin: 0; }
-  .strip img {
+  .sports-story-main {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--sand);
+    border-radius: 2px;
+  }
+  .sports-story-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .sports-story-main:hover img { transform: scale(1.02); }
+  .sports-stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .sports-stack figure,
+  .sports-story-main {
+    margin: 0;
+    position: relative;
+  }
+  .sports-stack figure { overflow: hidden; }
+  .sports-stack img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 2px;
-    filter: saturate(0.95);
   }
-  .strip figure.sq img { aspect-ratio: 4 / 3; }
-  .strip figure.portrait {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .strip figure.portrait img { aspect-ratio: 2 / 3; }
-  .strip figcaption {
-    font-size: 0.7rem;
-    color: var(--muted);
+  .sports-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 1rem 0.875rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+    color: #fff;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 0.5rem;
+    letter-spacing: 0.1em;
     font-weight: 500;
   }
-
-  /* ========== ABOUT ========== */
-  .about {
-    padding: 3rem 0;
-    background: var(--paper);
-  }
-  .about p {
-    font-size: 1.0625rem;
-    color: var(--ink);
-    max-width: 38em;
-  }
-  .about p + p { margin-top: 0.875rem; }
-
-  /* ========== CLIENT EXAMPLES ========== */
-  .examples {
-    padding: 3rem 0;
-    background: var(--tan);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .examples-label {
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-  }
-  .examples-grid {
+  .sports-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
   }
-  .example {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .example-title {
-    font-family: Georgia, serif;
-    font-size: 1rem;
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .example-desc {
-    font-size: 0.8125rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .example a {
-    color: var(--accent);
-    border-bottom: 1px dotted var(--line);
-    padding-bottom: 1px;
-    font-size: 0.8125rem;
-    align-self: flex-start;
-  }
-  .example a:hover { border-bottom-color: var(--accent); text-decoration: none; }
-
-  /* ========== CONTACT ========== */
-  .contact {
-    padding: 3rem 0 4rem;
+  .sports-row figure {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
     background: var(--sand);
-    border-top: 1px solid var(--line);
+    border-radius: 2px;
   }
-  .contact-label {
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
+  .sports-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: center;
-  }
-  .contact-name {
-    font-family: Georgia, serif;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .contact-list {
-    list-style: none;
-    display: grid;
-    gap: 0.4rem;
-    font-size: 0.9375rem;
-  }
-  .contact-list b {
-    display: inline-block;
-    width: 4.5em;
-    font-weight: 500;
-    color: var(--muted);
-    font-size: 0.8125rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .contact-list a { color: var(--ink); border-bottom: 1px dotted var(--line); padding-bottom: 1px; }
-  .contact-list a:hover { color: var(--accent); border-bottom-color: var(--accent); text-decoration: none; }
-  .qr {
-    width: 132px;
-    height: 132px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 6px;
-  }
-  .qr img { width: 100%; height: 100%; display: block; }
-  .qr-cap {
+  .sports-row figcaption {
     font-size: 0.6875rem;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     margin-top: 0.5rem;
     text-align: center;
+    font-weight: 500;
+  }
+  @media (max-width: 720px) {
+    .sports-story { grid-template-columns: 1fr; }
+    .sports-row { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .sports-row { grid-template-columns: 1fr; }
   }
 
-  @media (max-width: 560px) {
-    .strip { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-    .strip figure.portrait { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
-    .strip img { aspect-ratio: 4 / 3; }
-    .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .qr { margin: 0 auto; }
-    .qr-cap { text-align: center; }
-    .examples-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  /* ========== PROM / FORMAL ========== */
+  .prom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
+  .prom-grid figure {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--sand);
+    border-radius: 2px;
+  }
+  .prom-grid figure.wide {
+    grid-column: span 2;
+    aspect-ratio: 8 / 5;
+  }
+  .prom-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .prom-grid figcaption {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .placeholder-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sand);
+    color: var(--muted);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.875rem;
+  }
+  @media (max-width: 720px) {
+    .prom-grid { grid-template-columns: 1fr 1fr; }
+    .prom-grid figure.wide { grid-column: span 2; aspect-ratio: 16 / 9; }
+  }
+  @media (max-width: 480px) {
+    .prom-grid { grid-template-columns: 1fr; }
+    .prom-grid figure.wide { grid-column: span 1; }
+  }
+
+  /* ========== ALSO SHOOTS STRIP ========== */
+  .also-strip {
+    background: var(--tan);
+  }
+  .also-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .also-tile {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+    position: relative;
+    background: var(--sand);
+  }
+  .also-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.92);
+  }
+  .also-label {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.5rem 0.75rem 0.625rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: #fff;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    text-align: center;
+  }
+  @media (max-width: 720px) {
+    .also-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ========== BOOKING ========== */
+  .book {
+    background: var(--sand);
+  }
+  .book-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .book-form .full { grid-column: 1 / -1; }
+  .book-form label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.375rem;
+    font-weight: 500;
+  }
+  .book-form input,
+  .book-form select,
+  .book-form textarea {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    transition: border-color 0.15s ease;
+  }
+  .book-form input:focus,
+  .book-form select:focus,
+  .book-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .book-form textarea {
+    resize: vertical;
+    min-height: 6rem;
+  }
+  .book-submit {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .book-note {
+    font-size: 0.875rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+  .book-note a { color: var(--ink); border-bottom: 1px dotted var(--line); }
+  .book-note a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  @media (max-width: 560px) {
+    .book-form { grid-template-columns: 1fr; }
+  }
+
+  /* ========== TIP STRIP ========== */
+  .tip-strip {
+    background: var(--paper);
+    padding: 3rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .tip-strip-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .tip-strip p {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 32em;
+  }
+  .tip-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 2px;
+    transition: all 0.15s ease;
+  }
+  .tip-btn:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .tip-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 3rem 0 4rem;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+  }
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-clients {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  .footer-clients a {
+    color: var(--muted);
+    border-bottom: 1px dotted var(--line);
+    padding-bottom: 1px;
+  }
+  .footer-clients a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .footer-credit {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .footer-credit a { color: var(--accent); }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-logo">Bill Thorpe</a>
+    <ul class="nav-links">
+      <li><a href="#sports">Sports</a></li>
+      <li><a href="#prom">Prom</a></li>
+      <li><a href="#senior">Senior</a></li>
+      <li><a href="#headshots">Headshots</a></li>
+      <li><a href="#also">Also</a></li>
+      <li><a href="#book" class="nav-cta">Book</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap-narrow">
     <h1 class="hero-name">Bill Thorpe</h1>
-    <p class="hero-tag">Photographer. Builder. Curious.</p>
-    <p class="hero-tagline">Always asking what's over the next hill.</p>
+    <p class="hero-tagline">Game-day. Prom. Senior. Headshots.</p>
+    <p class="hero-sub">Manhattan, Illinois &middot; Chicago&rsquo;s south suburbs &middot; prints, event work, and the occasional artifact by request.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn">Book a session</a>
+      <a href="#sports" class="btn btn-ghost">See the work</a>
+    </div>
   </div>
 </header>
 
-<section class="strip-wrap" aria-label="Selected work">
+<!-- ============================================================ -->
+<!-- 01 — SPORTS -->
+<!-- ============================================================ -->
+<section id="sports">
   <div class="wrap">
-    <div class="strip">
-    <figure>
-      <img src="assets/sports-lacrosse-01.jpg" alt="Lacrosse goal-line save at Lincoln-Way" loading="lazy" width="225" height="225">
-      <figcaption>Sports</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/kayak.jpg" alt="Two paddlers in an inflatable kayak on a calm river, rear view" loading="lazy" width="225" height="225">
-      <figcaption>Outdoors</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/birdstone.jpg" alt="Polished banded slate birdstone with a larger tan birdstone, artifact photography" loading="lazy" width="225" height="225">
-      <figcaption>Artifacts</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/two-men-portrait.jpg" alt="Two men smiling at an outdoor event" loading="lazy" width="225" height="225">
-      <figcaption>People</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy" width="225" height="225">
-      <figcaption>Weddings</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/astronaut-product.jpg" alt="Astronaut bobblehead with rocket nosecones and medallions, product photography" loading="lazy" width="225" height="225">
-      <figcaption>Product</figcaption>
-    </figure>
-    <figure class="portrait">
-      <img src="assets/about-bill-forest-portrait.jpg" alt="Bill Thorpe, photographer, in the forest" loading="lazy" width="364" height="546">
-      <figcaption>Bill</figcaption>
-    </figure>
+    <div class="section-label">01</div>
+    <h2 class="section-title">Sports</h2>
+    <p class="section-desc">Action, reaction, and the moment that matters. Game-day coverage across Illinois — youth, high school, and travel ball. Lincoln-Way media pass. State championships.</p>
+
+    <!-- Beat 1: Crown moment — championship team -->
+    <div class="sports-story">
+      <figure class="sports-story-main">
+        <img src="assets/sports-lacrosse-03-state-champs-2024.jpg"
+             alt="Lincoln-Way lacrosse team celebrates 2024 IHSA State Championship, 13-5 final" loading="lazy">
+      </figure>
+      <div class="sports-stack">
+        <figure>
+          <img src="assets/sports-lacrosse-02-celebration.jpg"
+               alt="Lincoln-Sudbury #17 gives thumbs-up in celebration" loading="lazy">
+          <figcaption class="sports-caption">Reaction</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/sports-lacrosse-01.jpg"
+               alt="Lincoln-Way #19 winds up for a shot on goal" loading="lazy">
+          <figcaption class="sports-caption">Action</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Beat 2: Baseball -->
+    <div class="sports-row">
+      <figure>
+        <img src="assets/sports-baseball-brennan-01.jpg"
+             alt="Brennan #99 mid-swing with ball visible" loading="lazy">
+        <figcaption>Brennan · HS</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/sports-baseball-02-youth-swing.jpg"
+             alt="Youth baseball #12 swings, coach watches" loading="lazy">
+        <figcaption>Youth</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/sports-baseball-03-joliet-team-portrait.jpg"
+             alt="Joliet youth baseball team portrait at old Joliet Correctional Center, golden hour" loading="lazy">
+        <figcaption>Joliet · Team</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="about wrap">
-  <p>Sports, portraits, and the occasional outdoor shoot. Manhattan, Illinois — serving Chicago's south suburbs, northwest Indiana, and anywhere a good light shows up.</p>
-  <p>Prints, game-day coverage, and event work by request.</p>
-</section>
+<hr class="section-divider">
 
-<section class="examples wrap" id="client-examples" aria-label="Client examples">
-  <div class="examples-label">Client examples</div>
-  <div class="examples-grid">
-    <div class="example">
-      <div class="example-title">Starved Rock 2026</div>
-      <div class="example-desc">23rd Annual Native American Artifact Show, Utica IL. Coverage, marketing site, and on-site vendor announcement for the show host.</div>
-      <a href="https://billthorpe522.github.io/starved-rock-2026/" rel="noopener">View site &rarr;</a>
-    </div>
-    <div class="example">
-      <div class="example-title">The Usual Suspects</div>
-      <div class="example-desc">Chicago-south-suburb rock band. Brand site, gig calendar, and social photography. I play guitar in the band.</div>
-      <a href="https://playtheusualsuspects.com" rel="noopener">View site &rarr;</a>
-    </div>
-    <div class="example">
-      <div class="example-title">Barn Burner Relics</div>
-      <div class="example-desc">Static marketing site for a Native American artifact dealer. Dark editorial layout, product photography, and channel integration.</div>
-      <a href="https://billthorpe522.github.io/barn-burner-relics/" rel="noopener">View site &rarr;</a>
+<!-- ============================================================ -->
+<!-- 02 — PROM & FORMAL -->
+<!-- ============================================================ -->
+<section id="prom" style="background: var(--paper);">
+  <div class="wrap">
+    <div class="section-label">02</div>
+    <h2 class="section-title">Prom &amp; Formal</h2>
+    <p class="section-desc">Tenth grade, twelfth grade, golden hour, candid and posed. Outdoor and studio.</p>
+    <div class="prom-grid">
+      <figure class="wide">
+        <img src="assets/prom-01.jpg" alt="Couple in formal wear poses against vintage rusted truck at dusk" loading="lazy">
+      </figure>
+      <figure>
+        <div class="placeholder-tile" style="aspect-ratio: 4 / 5;">More on the way</div>
+      </figure>
+      <figure>
+        <div class="placeholder-tile" style="aspect-ratio: 4 / 5;">More on the way</div>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="contact wrap" id="contact" aria-label="Contact">
-  <div class="contact-label">Get in touch</div>
-  <div class="contact-grid">
-    <div>
-      <div class="contact-name">Bill Thorpe</div>
-      <ul class="contact-list">
-        <li><b>Email</b> <a href="mailto:billthorpephotography@gmail.com">billthorpephotography@gmail.com</a></li>
-        <li><b>Phone</b> <a href="tel:+18155826692">(815) 582-6692</a></li>
-        <li><b>Web</b> <a href="https://billthorpephotography.com">billthorpephotography.com</a></li>
-        <li><b>Shop</b> <a href="https://ifyp0g-1s.myshopify.com/" rel="noopener">Prints &amp; packages &rarr;</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="qr"><img src="assets/qr-vcard.svg" alt="Scan to save Bill Thorpe's contact to your phone" width="132" height="132"></div>
-      <div class="qr-cap">Scan to save contact</div>
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 03 — SENIOR PORTRAITS -->
+<!-- ============================================================ -->
+<section id="senior">
+  <div class="wrap">
+    <div class="section-label">03</div>
+    <h2 class="section-title">Senior Portraits</h2>
+    <p class="section-desc">Class of 2027 and beyond. Outdoor, studio, candid &mdash; whatever fits the senior.</p>
+    <div class="prom-grid">
+      <figure>
+        <div class="placeholder-tile" style="aspect-ratio: 4 / 5;">Coming soon</div>
+      </figure>
+      <figure>
+        <div class="placeholder-tile" style="aspect-ratio: 4 / 5;">Coming soon</div>
+      </figure>
+      <figure>
+        <div class="placeholder-tile" style="aspect-ratio: 4 / 5;">Coming soon</div>
+      </figure>
     </div>
   </div>
 </section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 04 — HEADSHOTS & COMMERCIAL -->
+<!-- ============================================================ -->
+<section id="headshots">
+  <div class="wrap">
+    <div class="section-label">04</div>
+    <h2 class="section-title">Headshots &amp; Commercial</h2>
+    <p class="section-desc">Studio and on-location. Corporate, executive, real estate, product. Same-day turnaround available.</p>
+    <div class="prom-grid">
+      <figure>
+        <img src="assets/headshot-01.jpg" alt="Professional male headshot with light blue suit" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/headshot-02.jpg" alt="Professional male headshot" loading="lazy">
+      </figure>
+      <figure>
+        <img src="assets/headshot-03.jpg" alt="Professional male headshot" loading="lazy">
+      </figure>
+      <figure class="wide">
+        <img src="assets/commercial-01.jpg" alt="Commercial / branded product photography" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- ALSO SHOOTS -->
+<!-- ============================================================ -->
+<section id="also" class="also-strip">
+  <div class="wrap">
+    <div class="section-label">ALSO</div>
+    <h2 class="section-title">Also shoots</h2>
+    <p class="section-desc">Outdoors, weddings, products, and the occasional artifact.</p>
+    <div class="also-grid">
+      <a href="#also" class="also-tile">
+        <img src="assets/kayak.jpg" alt="Two paddlers in an inflatable kayak on a calm river" loading="lazy">
+        <div class="also-label">Outdoors</div>
+      </a>
+      <a href="#also" class="also-tile">
+        <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy">
+        <div class="also-label">Weddings</div>
+      </a>
+      <a href="#also" class="also-tile">
+        <img src="assets/birdstone.jpg" alt="Polished banded slate birdstone, artifact photography" loading="lazy">
+        <div class="also-label">Artifacts</div>
+      </a>
+      <a href="#also" class="also-tile">
+        <img src="assets/astronaut-product.jpg" alt="Astronaut bobblehead with rocket nosecones, product photography" loading="lazy">
+        <div class="also-label">Products</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 05 — BOOK A SESSION -->
+<!-- ============================================================ -->
+<section id="book" class="book">
+  <div class="wrap-narrow">
+    <div class="section-label">05</div>
+    <h2 class="section-title">Book a session</h2>
+    <p class="section-desc">Tell me what you're after and I'll get back to you within 24 hours. Pricing varies per shoot &mdash; we&rsquo;ll lock that down once we&rsquo;ve talked scope.</p>
+
+    <form class="book-form" action="mailto:billthorpephotography@gmail.com" method="post" enctype="text/plain">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div>
+        <label for="session-type">Session type</label>
+        <select id="session-type" name="session_type" required>
+          <option value="">Pick one…</option>
+          <option value="sports">Sports / game-day</option>
+          <option value="prom">Prom / formal</option>
+          <option value="senior">Senior portraits</option>
+          <option value="headshot">Headshot / commercial</option>
+          <option value="wedding">Wedding</option>
+          <option value="couples">Couples / engagement</option>
+          <option value="product">Product / commercial</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="full">
+        <label for="date">Date preference</label>
+        <input type="text" id="date" name="date_preference" placeholder="e.g. Saturday Sept 12 or 'flexible'">
+      </div>
+      <div class="full">
+        <label for="message">Tell me about it</label>
+        <textarea id="message" name="message" rows="4" placeholder="Who, what, where, how long…"></textarea>
+      </div>
+      <button type="submit" class="btn book-submit">Send</button>
+    </form>
+
+    <div class="book-note">
+      Prefer text or call? <a href="tel:+18155826692">(815) 582-6692</a> &middot;
+      <a href="mailto:billthorpephotography@gmail.com">billthorpephotography@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIP STRIP -->
+<!-- ============================================================ -->
+<section class="tip-strip">
+  <div class="wrap tip-strip-inner">
+    <p>Like the work? Throw a few bucks in the tip jar.</p>
+    <div class="tip-buttons">
+      <a href="https://venmo.com/code?user_id=3040413103423488082&created=1784287188"
+         target="_blank" rel="noopener" class="tip-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.5 4.5h-15A1.5 1.5 0 0 0 3 6v12a1.5 1.5 0 0 0 1.5 1.5h15a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5zM12 17l-4-4h2.5v-3h3v3H16l-4 4z"/>
+        </svg>
+        Venmo
+      </a>
+      <!-- PayPal slot reserved -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-clients">
+      <a href="https://billthorpe522.github.io/starved-rock-2026/" rel="noopener">Starved Rock 2026</a>
+      <a href="https://playtheusualsuspects.com" rel="noopener">The Usual Suspects</a>
+      <a href="https://billthorpe522.github.io/pickett-produce/" rel="noopener">Pickett Produce</a>
+    </div>
+    <div class="footer-credit">
+      Built by <a href="https://brassbootstudio.com">Brass Boot Studio</a> &middot; &copy; 2026 Bill Thorpe
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
