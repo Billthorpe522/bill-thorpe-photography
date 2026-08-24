@@ -1,880 +1,317 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bill Thorpe — Photographer. Manhattan, IL and Chicago South Suburbs. Sports, prom, senior portraits, headshots, and more.">
-<title>Bill Thorpe · Photographer</title>
-<link rel="canonical" href="https://billthorpephotography.com/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --ink: #15110d;
-    --paper: #faf7f0;
-    --warm: #ece5d6;
-    --sand: #f0ede6;
-    --tan: #e8e1d2;
-    --muted: #6b6558;
-    --line: #d4cfc4;
-    --accent: #8b6f47;
-    --accent-dark: #6d563a;
-    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--sans);
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-  }
-  ::selection { background: var(--accent); color: #fff; }
-  img { display: block; max-width: 100%; height: auto; }
-  a { color: var(--accent); text-decoration: none; transition: color 0.15s ease; }
-  a:hover { color: var(--accent-dark); }
-
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  .wrap-narrow {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  /* ========== NAV ========== */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(250, 247, 240, 0.92);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.875rem 0;
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-  .nav-links a {
-    color: var(--ink);
-  }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-cta {
-    color: var(--accent) !important;
-    font-weight: 600;
-  }
-  @media (max-width: 720px) {
-    .nav-links { gap: 1rem; font-size: 0.8125rem; }
-    .nav-links li:nth-child(n+5) { display: none; }
-  }
-  @media (max-width: 480px) {
-    .nav-links { gap: 0.75rem; font-size: 0.75rem; }
-    .nav-links li:nth-child(n+4) { display: none; }
-  }
-
-  /* ========== HERO ========== */
-  .hero {
-    padding: 7rem 0 5rem;
-    background: var(--paper);
-  }
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 9vw, 5.5rem);
-    font-weight: 300;
-    letter-spacing: -0.035em;
-    line-height: 0.95;
-    margin-bottom: 1.5rem;
-    color: var(--ink);
-  }
-  .hero-tagline {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    max-width: 22em;
-  }
-  .hero-sub {
-    font-family: var(--sans);
-    font-size: 0.9375rem;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.01em;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-block;
-    padding: 0.875rem 1.5rem;
-    font-family: var(--sans);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    border: 1px solid var(--ink);
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 2px;
-    transition: all 0.15s ease;
-  }
-  .btn:hover {
-    background: transparent;
-    color: var(--ink);
-  }
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink);
-    border-color: var(--line);
-  }
-  .btn-ghost:hover {
-    border-color: var(--ink);
-    background: transparent;
-    color: var(--ink);
-  }
-  @media (max-width: 560px) {
-    .hero { padding: 4rem 0 3rem; }
-    .hero-ctas { flex-direction: column; align-items: stretch; }
-    .btn { text-align: center; }
-  }
-
-  /* ========== SECTION ========== */
-  section { padding: 5rem 0; }
-  .section-label {
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(1.875rem, 4vw, 2.75rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    color: var(--ink);
-  }
-  .section-desc {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 42em;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-  }
-  .section-divider {
-    border: 0;
-    border-top: 1px solid var(--line);
-    margin: 0;
-  }
-
-  /* ========== SPORTS — CROWN MOMENTS DUO ========== */
-  .sports-crowns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-  .sports-crown {
-    margin: 0;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: var(--sand);
-    border-radius: 2px;
-    position: relative;
-  }
-  .sports-crown img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .sports-crown:hover img { transform: scale(1.02); }
-  .sports-crown figcaption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem 1.25rem 1rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.2) 70%, transparent);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .crown-label {
-    font-family: var(--serif);
-    font-size: 1.0625rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    line-height: 1.2;
-  }
-  .crown-meta {
-    font-size: 0.6875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 500;
-    opacity: 0.78;
-  }
-  @media (max-width: 720px) {
-    .sports-crowns { grid-template-columns: 1fr; }
-  }
-
-  /* ========== SPORTS GRID (3-beat) ========== */
-  .sports-story {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .sports-story-main {
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: var(--sand);
-    border-radius: 2px;
-  }
-  .sports-story-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .sports-story-main:hover img { transform: scale(1.02); }
-  .sports-stack {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  .sports-stack figure,
-  .sports-story-main {
-    margin: 0;
-    position: relative;
-  }
-  .sports-stack figure { overflow: hidden; }
-  .sports-stack img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 2px;
-  }
-  .sports-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem 1rem 0.875rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
-    color: #fff;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
-  .sports-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .sports-row figure {
-    margin: 0;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: var(--sand);
-    border-radius: 2px;
-  }
-  .sports-row img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .sports-row figcaption {
-    font-size: 0.6875rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 0.5rem;
-    text-align: center;
-    font-weight: 500;
-  }
-  @media (max-width: 720px) {
-    .sports-story { grid-template-columns: 1fr; }
-    .sports-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-    .sports-row figure { aspect-ratio: 16 / 10; }
-  }
-  @media (max-width: 480px) {
-    .sports-row { grid-template-columns: 1fr; gap: 0.5rem; }
-    .sports-row figure { aspect-ratio: 16 / 10; }
-  }
-
-  /* ========== PROM / FORMAL ========== */
-  .prom-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .prom-grid figure {
-    margin: 0;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--sand);
-    border-radius: 2px;
-  }
-  .prom-grid figure.wide {
-    grid-column: span 2;
-    aspect-ratio: 8 / 5;
-  }
-  .prom-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .prom-grid figcaption {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-    text-align: center;
-    letter-spacing: 0.02em;
-  }
-  .placeholder-tile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--sand);
-    color: var(--muted);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.875rem;
-  }
-  @media (max-width: 720px) {
-    .prom-grid { grid-template-columns: 1fr 1fr; }
-    .prom-grid figure.wide { grid-column: span 2; aspect-ratio: 16 / 9; }
-  }
-  @media (max-width: 480px) {
-    .prom-grid { grid-template-columns: 1fr; }
-    .prom-grid figure.wide { grid-column: span 1; }
-  }
-
-  /* ========== ALSO SHOOTS ========== */
-  .also-strip {
-    background: var(--tan);
-    padding: 6rem 0;
-  }
-  .also-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-  }
-  .also-tile {
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    border-radius: 2px;
-    position: relative;
-    background: var(--sand);
-  }
-  .also-tile img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(0.92);
-    transition: transform 0.4s ease;
-  }
-  .also-tile:hover img { transform: scale(1.04); }
-  .also-label {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 2.5rem 0.875rem 0.875rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.25) 65%, transparent);
-    color: #fff;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .also-cat {
-    font-family: var(--serif);
-    font-size: 1.0625rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    line-height: 1.1;
-  }
-  .also-sub {
-    font-size: 0.6875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    opacity: 0.78;
-  }
-  @media (max-width: 960px) {
-    .also-grid { grid-template-columns: repeat(3, 1fr); }
-    .also-tile { aspect-ratio: 4 / 5; }
-  }
-  @media (max-width: 560px) {
-    .also-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* ========== BOOKING ========== */
-  .book {
-    background: var(--sand);
-  }
-  .book-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem 1.25rem;
-    margin-bottom: 2rem;
-  }
-  .book-form .full { grid-column: 1 / -1; }
-  .book-form label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 0.375rem;
-    font-weight: 500;
-  }
-  .book-form input,
-  .book-form select,
-  .book-form textarea {
-    width: 100%;
-    padding: 0.75rem 0.875rem;
-    font-family: var(--sans);
-    font-size: 0.9375rem;
-    color: var(--ink);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    transition: border-color 0.15s ease;
-  }
-  .book-form input:focus,
-  .book-form select:focus,
-  .book-form textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-  .book-form textarea {
-    resize: vertical;
-    min-height: 6rem;
-  }
-  .book-submit {
-    grid-column: 1 / -1;
-    justify-self: start;
-  }
-  .book-note {
-    font-size: 0.875rem;
-    color: var(--muted);
-    border-top: 1px solid var(--line);
-    padding-top: 1.5rem;
-  }
-  .book-note a { color: var(--ink); border-bottom: 1px dotted var(--line); }
-  .book-note a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-  @media (max-width: 560px) {
-    .book-form { grid-template-columns: 1fr; }
-  }
-
-  /* ========== TIP STRIP ========== */
-  .tip-strip {
-    background: var(--paper);
-    padding: 3rem 0;
-    border-top: 1px solid var(--line);
-  }
-  .tip-strip-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-  }
-  .tip-strip p {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 32em;
-  }
-  .tip-buttons {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .tip-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.125rem;
-    font-family: var(--sans);
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: 2px;
-    transition: all 0.15s ease;
-  }
-  .tip-btn:hover {
-    border-color: var(--ink);
-    color: var(--ink);
-  }
-  .tip-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* ========== FOOTER ========== */
-  footer {
-    padding: 3rem 0 4rem;
-    background: var(--paper);
-    border-top: 1px solid var(--line);
-  }
-  .footer-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    text-align: center;
-  }
-  .footer-clients {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 0.8125rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
-  .footer-clients a {
-    color: var(--muted);
-    border-bottom: 1px dotted var(--line);
-    padding-bottom: 1px;
-  }
-  .footer-clients a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-  .footer-credit {
-    font-size: 0.8125rem;
-    color: var(--muted);
-  }
-  .footer-credit a { color: var(--accent); }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bill Thorpe helps small businesses look clear, credible, and worth contacting through websites, video, photography, and practical business advice.">
+  <meta name="theme-color" content="#171916">
+  <title>Bill Thorpe | Websites, Video, Photography</title>
+  <link rel="canonical" href="https://billthorpephotography.com/">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --ink: #171916;
+      --ink-soft: #252923;
+      --paper: #f2f0e9;
+      --paper-2: #e7e5dc;
+      --white: #fbfaf6;
+      --muted: #686d64;
+      --line: #c9ccc2;
+      --accent: #b8643e;
+      --accent-dark: #8f482d;
+      --accent-pale: #ead5c7;
+      --radius: 14px;
+      --shadow: 0 22px 60px rgba(23,25,22,.14);
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Arial Narrow", "Aptos Display", Inter, ui-sans-serif, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #f0eee7;
+        --ink-soft: #d8d8cf;
+        --paper: #171916;
+        --paper-2: #222720;
+        --white: #20241f;
+        --muted: #a4a99f;
+        --line: #3d453c;
+        --accent: #d17a53;
+        --accent-dark: #ef9b73;
+        --accent-pale: #493329;
+        --shadow: 0 22px 60px rgba(0,0,0,.28);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    ::selection { background: var(--accent); color: #fff; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .wrap-tight { width: min(820px, calc(100% - 40px)); margin: 0 auto; }
+    .skip { position: absolute; left: -999px; top: 8px; z-index: 100; padding: 10px 14px; background: var(--accent); color: #fff; }
+    .skip:focus { left: 8px; }
+    .site-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(16px); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 750; letter-spacing: -.04em; font-size: 1.08rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 25px; font-size: .86rem; font-weight: 650; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+    .nav-links .nav-action { color: var(--accent); }
+    .nav-toggle { display: none; border: 1px solid var(--line); color: var(--ink); background: transparent; border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+    .hero { min-height: min(760px, calc(100dvh - 72px)); display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(340px, .96fr); gap: clamp(34px, 7vw, 100px); align-items: center; padding: 72px 0 84px; }
+    .hero-copy { max-width: 610px; }
+    .eyebrow { margin: 0 0 18px; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--display); letter-spacing: -.055em; line-height: .98; }
+    h1 { max-width: 650px; margin-bottom: 24px; font-size: clamp(3.4rem, 8vw, 7.35rem); font-weight: 760; }
+    .hero-lede { max-width: 540px; margin-bottom: 30px; color: var(--muted); font-size: clamp(1.02rem, 1.7vw, 1.26rem); line-height: 1.5; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 9px; color: var(--paper); background: var(--ink); font-size: .9rem; font-weight: 750; transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); background: var(--accent); border-color: var(--accent); color: #fff; }
+    .button.secondary { color: var(--ink); background: transparent; border-color: var(--line); }
+    .button.secondary:hover, .button.secondary:focus-visible { color: var(--ink); background: var(--paper-2); border-color: var(--ink); }
+    .hero-visual { position: relative; min-height: 500px; }
+    .hero-photo { position: absolute; inset: 0 42px 42px 0; overflow: hidden; border-radius: var(--radius); background: var(--paper-2); box-shadow: var(--shadow); }
+    .hero-photo img { height: 100%; object-fit: cover; object-position: 55% center; }
+    .hero-note { position: absolute; right: 0; bottom: 0; width: min(230px, 52%); padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); box-shadow: 0 14px 35px rgba(23,25,22,.1); }
+    .hero-note strong { display: block; margin-bottom: 9px; font-size: 1.2rem; letter-spacing: -.04em; }
+    .hero-note p { margin: 0; color: var(--muted); font-size: .85rem; }
+    section { padding: 110px 0; }
+    .section-head { max-width: 700px; margin-bottom: 44px; }
+    .section-head h2 { margin-bottom: 16px; font-size: clamp(2.35rem, 5vw, 4.8rem); }
+    .section-head p { max-width: 600px; margin-bottom: 0; color: var(--muted); font-size: 1.05rem; }
+    .intro-band { padding: 34px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .intro-band p { max-width: 850px; margin: 0; font-size: clamp(1.18rem, 2.3vw, 1.85rem); letter-spacing: -.035em; line-height: 1.25; }
+    .intro-band strong { color: var(--accent); }
+    .service-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
+    .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+    .service { min-height: 180px; padding: 23px 20px 24px 0; border-bottom: 1px solid var(--line); }
+    .service:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+    .service h3 { margin-bottom: 10px; font-family: var(--sans); font-size: 1.08rem; letter-spacing: -.02em; line-height: 1.15; }
+    .service p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .service-number { display: block; margin-bottom: 21px; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+    .paper-section { background: var(--paper-2); }
+    .work-grid { display: grid; grid-template-columns: 1.3fr .7fr .7fr; grid-template-rows: 265px 265px; gap: 14px; }
+    .work-card { position: relative; overflow: hidden; min-width: 0; border-radius: var(--radius); background: var(--ink-soft); }
+    .work-card:first-child { grid-row: span 2; }
+    .work-card img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .work-card:hover img { transform: scale(1.035); }
+    .work-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 44%, rgba(0,0,0,.72)); pointer-events: none; }
+    .work-caption { position: absolute; right: 18px; bottom: 17px; left: 18px; z-index: 1; color: #fff; }
+    .work-caption strong { display: block; font-size: 1rem; }
+    .work-caption span { display: block; margin-top: 3px; color: rgba(255,255,255,.72); font-size: .75rem; }
+    .work-link { display: inline-block; margin-top: 27px; color: var(--accent); font-weight: 750; font-size: .92rem; }
+    .example-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 76px; align-items: start; }
+    .example-list { display: grid; gap: 13px; }
+    .example { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; padding: 20px 0; border-top: 1px solid var(--line); }
+    .example:last-child { border-bottom: 1px solid var(--line); }
+    .example h3 { margin-bottom: 5px; font-family: var(--sans); font-size: 1.12rem; letter-spacing: -.025em; line-height: 1.15; }
+    .example p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .example a { color: var(--accent); font-size: .85rem; font-weight: 750; white-space: nowrap; }
+    .video-panel { padding: 26px; border-radius: var(--radius); background: var(--ink); color: #f6f4ed; }
+    .video-panel h3 { margin-bottom: 14px; font-size: clamp(1.75rem, 3vw, 2.7rem); }
+    .video-panel p { color: #b9beb4; }
+    .video-panel .button { margin-top: 8px; color: var(--ink); background: #f6f4ed; border-color: #f6f4ed; }
+    .video-panel .button:hover, .video-panel .button:focus-visible { color: #fff; background: var(--accent); border-color: var(--accent); }
+    .video-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 26px 0 22px; }
+    .video-card { overflow: hidden; border: 1px solid #3b433a; border-radius: 10px; background: #242a23; }
+    .video-card img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .video-card span { display: block; padding: 10px 11px; color: #e7e8df; font-size: .75rem; line-height: 1.3; }
+    .about-grid { display: grid; grid-template-columns: .74fr 1.26fr; gap: 76px; align-items: center; }
+    .about-photo { overflow: hidden; max-width: 420px; border-radius: var(--radius); background: var(--paper-2); }
+    .about-photo img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .about-copy h2 { max-width: 620px; margin-bottom: 20px; font-size: clamp(2.45rem, 5vw, 4.6rem); }
+    .about-copy p { max-width: 620px; color: var(--muted); font-size: 1.04rem; }
+    .proof-line { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 27px; color: var(--ink); font-size: .82rem; font-weight: 750; }
+    .proof-line span::before { content: "+"; margin-right: 7px; color: var(--accent); }
+    .contact { background: var(--accent-pale); }
+    .contact-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 76px; align-items: start; }
+    .contact h2 { margin-bottom: 18px; font-size: clamp(2.55rem, 5vw, 5rem); }
+    .contact-lede { max-width: 430px; color: var(--muted); }
+    .contact-details { margin-top: 30px; display: grid; gap: 7px; font-size: .92rem; }
+    .contact-details a { color: var(--accent-dark); font-weight: 750; }
+    .project-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--ink-soft); font-size: .77rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    input, select, textarea { width: 100%; border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent); border-radius: 8px; padding: 13px 14px; color: var(--ink); background: color-mix(in srgb, var(--paper) 52%, transparent); outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent); }
+    textarea { min-height: 135px; resize: vertical; }
+    .form-note { grid-column: 1 / -1; margin: -4px 0 0; color: var(--muted); font-size: .78rem; }
+    .form-submit { border: 0; cursor: pointer; }
+    footer { padding: 30px 0 42px; border-top: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); background: var(--accent-pale); }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .8rem; }
+    .footer-row a { color: var(--accent-dark); font-weight: 700; }
+    @media (max-width: 850px) {
+      .hero, .service-layout, .example-layout, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
+      .hero { min-height: auto; padding-top: 56px; }
+      .hero-copy { order: 1; }
+      .hero-visual { order: 2; min-height: 420px; }
+      .about-photo { max-width: 100%; }
+      .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 280px 190px; }
+      .work-card:first-child { grid-column: 1 / -1; grid-row: auto; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-tight { width: min(100% - 28px, 1180px); }
+      .nav { min-height: 64px; }
+      .nav-toggle { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 64px; right: 14px; left: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); box-shadow: var(--shadow); }
+      .nav-links.open { display: grid; gap: 16px; }
+      h1 { font-size: clamp(3rem, 16vw, 5rem); }
+      section { padding: 78px 0; }
+      .hero { padding: 43px 0 64px; }
+      .hero-visual { min-height: 350px; }
+      .hero-photo { inset: 0 28px 28px 0; }
+      .hero-note { width: 205px; padding: 16px; }
+      .service-list { grid-template-columns: 1fr; }
+      .service, .service:nth-child(even) { padding: 20px 0; border-left: 0; }
+      .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 235px 160px 160px; gap: 9px; }
+      .work-card:first-child { grid-column: 1 / -1; }
+      .work-caption { right: 12px; bottom: 12px; left: 12px; }
+      .example { grid-template-columns: 1fr; gap: 7px; }
+      .example a { justify-self: start; }
+      .video-cards { grid-template-columns: 1fr; }
+      .project-form { grid-template-columns: 1fr; }
+      .field.full, .form-note { grid-column: auto; }
+      .footer-row { display: grid; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top">Bill Thorpe<span>.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#work">Selected work</a>
+        <a href="#videos">Video</a>
+        <a href="#about">About</a>
+        <a class="nav-action" href="#contact">Start a project</a>
+      </div>
+    </nav>
+  </header>
 
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="nav-logo">Bill Thorpe</a>
-    <ul class="nav-links">
-      <li><a href="#sports">Sports</a></li>
-      <li><a href="#prom">Prom</a></li>
-      <li><a href="#headshots">Headshots</a></li>
-      <li><a href="#also">Also</a></li>
-      <li><a href="#book" class="nav-cta">Book</a></li>
-    </ul>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap-narrow">
-    <h1 class="hero-name">Bill Thorpe</h1>
-    <p class="hero-tagline">The moment that matters, in any setting.</p>
-    <p class="hero-sub">Game-day. Prom. Senior. Headshots. Manhattan, Illinois &middot; Chicago&rsquo;s south suburbs &middot; prints, event work, and the occasional artifact by request.</p>
-    <div class="hero-ctas">
-      <a href="#book" class="btn">Book a session</a>
-      <a href="#sports" class="btn btn-ghost">See the work</a>
-    </div>
-  </div>
-</header>
-
-<!-- ============================================================ -->
-<!-- 01 — SPORTS -->
-<!-- ============================================================ -->
-<section id="sports">
-  <div class="wrap">
-    <div class="section-label">01</div>
-    <h2 class="section-title">Sports</h2>
-    <p class="section-desc">Action, reaction, and the moment that matters. Game-day coverage across Illinois — youth, high school, and travel ball. Lincoln-Way media pass. State championships.</p>
-
-    <!-- Beat 1: Crown Moments duo — both NIU, both team-with-trophy -->
-    <div class="sports-crowns">
-      <figure class="sports-crown">
-        <img src="assets/sports-lacrosse-03-sectional-2026.jpg"
-             alt="Lincoln-Way lacrosse team celebrates Sectional Championship win at NIU Convocation Center, 13-5 final" loading="lazy">
-        <figcaption>
-          <span class="crown-label">Lacrosse &middot; Sectional Champions</span>
-          <span class="crown-meta">Lincoln-Way &middot; 2026</span>
-        </figcaption>
-      </figure>
-      <figure class="sports-crown">
-        <img src="assets/sports-wrestling-01-iesa-2026-runner-up.jpg"
-             alt="Wrestling team holds IESA 2026 State Runner-Up trophy at NIU Convocation Center" loading="lazy">
-        <figcaption>
-          <span class="crown-label">Wrestling &middot; IESA State Runner-Up</span>
-          <span class="crown-meta">NIU Convocation Center &middot; 2026</span>
-        </figcaption>
-      </figure>
-    </div>
-
-    <!-- Beat 2: Action triptych — different sports, all mid-motion -->
-    <div class="sports-row">
-      <figure>
-        <img src="assets/sports-lacrosse-01.jpg"
-             alt="Lincoln-Way #19 winds up for a shot on goal" loading="lazy">
-        <figcaption>Lacrosse &middot; Action</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/sports-baseball-brennan-01.jpg"
-             alt="Brennan #99 mid-swing with ball visible" loading="lazy">
-        <figcaption>Baseball &middot; HS</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/sports-softball-01-pitcher.jpg"
-             alt="Female softball pitcher in mid-throw, follow-through" loading="lazy">
-        <figcaption>Softball &middot; Pitch</figcaption>
-      </figure>
-    </div>
-
-    <!-- Beat 3: Range — youth + setting -->
-    <div class="sports-row">
-      <figure>
-        <img src="assets/sports-baseball-02-youth-swing.jpg"
-             alt="Youth baseball #12 swings, coach watches" loading="lazy">
-        <figcaption>Youth &middot; Swing</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/sports-baseball-04-plainfield-flyball.jpg"
-             alt="Plainfield outfielder tracking fly ball against Chicago Pipefitters Local 597 wall" loading="lazy">
-        <figcaption>HS &middot; Tracking</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/sports-baseball-03-joliet-team-portrait.jpg"
-             alt="Joliet youth baseball team portrait at old Joliet Correctional Center, golden hour" loading="lazy">
-        <figcaption>Team &middot; Golden hour</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ============================================================ -->
-<!-- 02 — PROM & FORMAL -->
-<!-- ============================================================ -->
-<section id="prom" style="background: var(--paper);">
-  <div class="wrap">
-    <div class="section-label">02</div>
-    <h2 class="section-title">Prom &amp; Formal</h2>
-    <p class="section-desc">Tenth grade, twelfth grade, golden hour, candid and posed. Outdoor and studio.</p>
-    <div class="prom-grid">
-      <figure class="wide">
-        <img src="assets/prom-01.jpg" alt="Couple in formal wear poses against vintage rusted truck at dusk" loading="lazy">
-      </figure>
-      <figure>
-        <img src="assets/prom-02-belt-sunglasses.jpg" alt="Couple outdoors, woman in beaded white dress with corsage, man in rolled-sleeve white shirt with sunglasses on belt" loading="lazy">
-      </figure>
-      <figure>
-        <img src="assets/prom-03-golden-hour-red-tie.jpg" alt="Couple at golden hour, man in navy suit with red tie and boutonniere, woman with glowing backlit hair" loading="lazy">
-      </figure>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ============================================================ -->
-<!-- 04 — HEADSHOTS & COMMERCIAL -->
-<!-- ============================================================ -->
-<section id="headshots">
-  <div class="wrap">
-    <div class="section-label">04</div>
-    <h2 class="section-title">Headshots &amp; Commercial</h2>
-    <p class="section-desc">Studio and on-location. Corporate, executive, real estate, product. Same-day turnaround available.</p>
-    <div class="prom-grid">
-      <figure>
-        <img src="assets/headshot-01.jpg" alt="Professional male headshot with light blue suit" loading="lazy">
-      </figure>
-      <figure>
-        <img src="assets/headshot-02.jpg" alt="Professional male headshot" loading="lazy">
-      </figure>
-      <figure>
-        <img src="assets/headshot-03.jpg" alt="Professional male headshot" loading="lazy">
-      </figure>
-      <figure class="wide">
-        <img src="assets/commercial-01.jpg" alt="Commercial / branded product photography" loading="lazy">
-      </figure>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ============================================================ -->
-<!-- ALSO SHOOTS -->
-<!-- ============================================================ -->
-<section id="also" class="also-strip">
-  <div class="wrap">
-    <div class="section-label">ALSO</div>
-    <h2 class="section-title">Same photographer. Different subjects.</h2>
-    <p class="section-desc">Outdoors, weddings, products, and the occasional artifact. The eye doesn&rsquo;t switch off when the assignment changes.</p>
-    <div class="also-grid">
-      <a href="#also" class="also-tile">
-        <img src="assets/wedding-kiss.jpg" alt="Bride and groom sharing a golden-hour kiss" loading="lazy">
-        <div class="also-label">
-          <span class="also-cat">Weddings</span>
-          <span class="also-sub">Connection, candid, golden hour</span>
+  <main id="main">
+    <header class="hero wrap" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Creative services for real businesses</p>
+        <h1>Make the good work easier to see.</h1>
+        <p class="hero-lede">Websites, client video, photography, and practical business advice for people who need a clear presence, not another complicated agency process.</p>
+        <div class="actions">
+          <a class="button" href="#contact">Start a project</a>
+          <a class="button secondary" href="#work">View selected work</a>
         </div>
-      </a>
-      <a href="#also" class="also-tile">
-        <img src="assets/kayak.jpg" alt="Two paddlers in an inflatable kayak on a calm river" loading="lazy">
-        <div class="also-label">
-          <span class="also-cat">Outdoors</span>
-          <span class="also-sub">Landscape, nature, light</span>
+      </div>
+      <div class="hero-visual" aria-label="Bill Thorpe working on a visual project">
+        <div class="hero-photo"><img src="assets/commercial-01.jpg" alt="Commercial product photography created by Bill Thorpe" width="1280" height="854"></div>
+        <div class="hero-note"><strong>Clear beats complicated.</strong><p>A useful website should help a customer understand what you do and what to do next.</p></div>
+      </div>
+    </header>
+
+    <div class="intro-band">
+      <div class="wrap"><p>Photography is still part of the work. It is not the whole story. <strong>The same eye applies to your website, your videos, and the way your business explains itself.</strong></p></div>
+    </div>
+
+    <section id="services">
+      <div class="wrap service-layout">
+        <div class="section-head">
+          <p class="eyebrow">What I can help with</p>
+          <h2>Build the thing people need to understand.</h2>
+          <p>Good creative work starts with the business question. What are you selling, who needs it, and what should happen after someone finds you?</p>
         </div>
-      </a>
-      <a href="#also" class="also-tile">
-        <img src="assets/birdstone.jpg" alt="Polished banded slate birdstone, artifact photography" loading="lazy">
-        <div class="also-label">
-          <span class="also-cat">Artifacts</span>
-          <span class="also-sub">Detail, texture, provenance</span>
+        <div class="service-list">
+          <article class="service"><span class="service-number">01</span><h3>Website building</h3><p>Professional landing pages and small-business sites that explain the offer, show the proof, and make the next step obvious.</p></article>
+          <article class="service"><span class="service-number">02</span><h3>Business advice</h3><p>A practical outside perspective on your offer, message, customer path, and the parts of your online presence that are getting in the way.</p></article>
+          <article class="service"><span class="service-number">03</span><h3>YouTube and client video</h3><p>Custom videos for businesses, creators, and projects that need more than a still image. Planning, shooting, editing, thumbnails, and publishing support.</p></article>
+          <article class="service"><span class="service-number">04</span><h3>Photography and content</h3><p>Headshots, products, events, sports, and visual libraries that give the rest of your marketing something real to work with.</p></article>
         </div>
-      </a>
-      <a href="#also" class="also-tile">
-        <img src="assets/astronaut-product.jpg" alt="Astronaut bobblehead with rocket nosecones, product photography" loading="lazy">
-        <div class="also-label">
-          <span class="also-cat">Products</span>
-          <span class="also-sub">Branded, controlled, clean</span>
+      </div>
+    </section>
+
+    <section class="paper-section" id="work">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Selected visual work</p><h2>Proof that the eye travels.</h2><p>Sports, people, products, and places. The portfolio stays here because strong visual judgment is part of every project.</p></div>
+        <div class="work-grid">
+          <a class="work-card" href="#contact"><img src="assets/sports-lacrosse-03-sectional-2026.jpg" alt="Lacrosse team celebrating a sectional championship" width="1280" height="854"><span class="work-caption"><strong>Sports and event stories</strong><span>Action, people, and the moment after it matters</span></span></a>
+          <a class="work-card" href="#contact"><img src="assets/headshot-01.jpg" alt="Professional headshot in a light blue suit" width="1024" height="1280"><span class="work-caption"><strong>Headshots</strong><span>People should look like themselves</span></span></a>
+          <a class="work-card" href="#contact"><img src="assets/birdstone.jpg" alt="Banded slate birdstone photographed for a client" width="1138" height="854"><span class="work-caption"><strong>Products and objects</strong><span>Detail, texture, and context</span></span></a>
+          <a class="work-card" href="#contact"><img src="assets/prom-03-golden-hour-red-tie.jpg" alt="Couple photographed in warm evening light" width="1280" height="854"><span class="work-caption"><strong>People and milestones</strong><span>Natural direction, useful images</span></span></a>
+          <a class="work-card" href="#contact"><img src="assets/kayak.jpg" alt="Two paddlers on a calm river" width="1137" height="853"><span class="work-caption"><strong>Places and atmosphere</strong><span>Images with room to breathe</span></span></a>
         </div>
-      </a>
-      <a href="#also" class="also-tile">
-        <img src="assets/couples-01-field-cowboy-boots.jpg" alt="Young couple embracing in a grassy field, cowboy boots" loading="lazy">
-        <div class="also-label">
-          <span class="also-cat">Couples</span>
-          <span class="also-sub">Engagement, anniversary</span>
+        <a class="work-link" href="https://billthorpephotography.com/">See the full photography portfolio</a>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="wrap example-layout">
+        <div class="section-head"><p class="eyebrow">Websites and client examples</p><h2>Not just photos.</h2><p>I use the same process for a small business, a collector, a band, or a local service company: clarify the story, build the useful page, and make it easy to share.</p></div>
+        <div class="example-list">
+          <article class="example"><div><h3>Barn Burner Relics</h3><p>Catalog, auction, and collector-focused web presence.</p></div><a href="https://barnburnerrelics.net/" target="_blank" rel="noopener">View site</a></article>
+          <article class="example"><div><h3>Barella Lawn Care</h3><p>Local service brand with a direct path to contact.</p></div><a href="https://barellalawncare.com/" target="_blank" rel="noopener">View site</a></article>
+          <article class="example"><div><h3>Play The Usual Suspects</h3><p>Band site built to help people hear, see, and book the group.</p></div><a href="https://playtheusualsuspects.com/" target="_blank" rel="noopener">View site</a></article>
         </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ============================================================ -->
-<!-- 05 — BOOK A SESSION -->
-<!-- ============================================================ -->
-<section id="book" class="book">
-  <div class="wrap-narrow">
-    <div class="section-label">05</div>
-    <h2 class="section-title">Book a session</h2>
-    <p class="section-desc">Tell me what you're after and I'll get back to you within 24 hours. Pricing varies per shoot &mdash; we&rsquo;ll lock that down once we&rsquo;ve talked scope.</p>
-
-    <form class="book-form" action="mailto:billthorpephotography@gmail.com" method="post" enctype="text/plain">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
       </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div>
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone">
-      </div>
-      <div>
-        <label for="session-type">Session type</label>
-        <select id="session-type" name="session_type" required>
-          <option value="">Pick one…</option>
-          <option value="sports">Sports / game-day</option>
-          <option value="prom">Prom / formal</option>
-          <option value="senior">Senior portraits</option>
-          <option value="headshot">Headshot / commercial</option>
-          <option value="wedding">Wedding</option>
-          <option value="couples">Couples / engagement</option>
-          <option value="product">Product / commercial</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="full">
-        <label for="date">Date preference</label>
-        <input type="text" id="date" name="date_preference" placeholder="e.g. Saturday Sept 12 or 'flexible'">
-      </div>
-      <div class="full">
-        <label for="message">Tell me about it</label>
-        <textarea id="message" name="message" rows="4" placeholder="Who, what, where, how long…"></textarea>
-      </div>
-      <button type="submit" class="btn book-submit">Send</button>
-    </form>
+    </section>
 
-    <div class="book-note">
-      <a href="mailto:billthorpephotography@gmail.com">billthorpephotography@gmail.com</a>
-    </div>
-  </div>
-</section>
+    <section class="paper-section" id="videos">
+      <div class="wrap example-layout">
+        <div class="video-panel">
+          <p class="eyebrow">Video for the work you already do</p>
+          <h3>A client video should have a job.</h3>
+          <p>Show the piece. Explain the service. Document the event. Give the audience a reason to come back. I can help with the story, the shoot, the edit, and the handoff.</p>
+          <div class="video-cards">
+            <a class="video-card" href="https://www.youtube.com/watch?v=RSMo0lYjbDk" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/RSMo0lYjbDk/maxresdefault.jpg" alt="Barn Burner Relics auction preview video thumbnail"><span>Auction preview and product story</span></a>
+            <a class="video-card" href="https://www.youtube.com/watch?v=j_yRBKp6AYU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/j_yRBKp6AYU/maxresdefault.jpg" alt="Behind the scenes relic auction video thumbnail"><span>Behind the scenes client video</span></a>
+          </div>
+          <a class="button" href="youtube.html">Open the YouTube page</a>
+        </div>
+        <div class="section-head"><p class="eyebrow">A channel is a home base</p><h2>Give your videos somewhere to lead.</h2><p>The video can live on YouTube. Your website gives it context, credibility, and a clear next step for the person who is interested.</p><p><a class="work-link" href="https://www.youtube.com/@billthorpe-btfpv" target="_blank" rel="noopener">Visit Bill's YouTube channel</a></p></div>
+      </div>
+    </section>
 
-<!-- ============================================================ -->
-<!-- TIP STRIP -->
-<!-- ============================================================ -->
-<section class="tip-strip">
-  <div class="wrap tip-strip-inner">
-    <p>Like the work? Throw a few bucks in the tip jar.</p>
-    <div class="tip-buttons">
-      <a href="https://venmo.com/code?user_id=3040413103423488082&created=1784287188"
-         target="_blank" rel="noopener" class="tip-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M19.5 4.5h-15A1.5 1.5 0 0 0 3 6v12a1.5 1.5 0 0 0 1.5 1.5h15a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5zM12 17l-4-4h2.5v-3h3v3H16l-4 4z"/>
-        </svg>
-        Venmo
-      </a>
-      <!-- PayPal slot reserved -->
-    </div>
-  </div>
-</section>
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo"><img src="assets/about-bill-mirror.jpg" alt="Bill Thorpe outdoors with a camera" width="800" height="1280"></div>
+        <div class="about-copy"><p class="eyebrow">The person behind the work</p><h2>Useful first. Good-looking second. Both matter.</h2><p>I work with small businesses and independent people who know their work deserves a better presentation. Sometimes that means a website. Sometimes it means a short video, a set of product photos, or an honest conversation about what the customer is actually seeing.</p><p>The goal is not to make your business sound bigger than it is. The goal is to help the right people understand it faster.</p><div class="proof-line"><span>Manhattan, Illinois</span><span>Websites and media</span><span>Direct communication</span></div></div>
+      </div>
+    </section>
 
-<!-- ============================================================ -->
-<!-- FOOTER -->
-<!-- ============================================================ -->
-<footer>
-  <div class="wrap footer-inner">
-    <div class="footer-clients">
-      <a href="https://barnburnerrelics.shop" rel="noopener">Barn Burner Relics</a>
-      <a href="https://barellalawncare.com" rel="noopener">Barella Lawn Care</a>
-      <a href="https://playtheusualsuspects.com" rel="noopener">Play The Usual Suspects</a>
-    </div>
-    <div class="footer-credit">
-      Built by me.
-    </div>
-  </div>
-</footer>
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div><p class="eyebrow">Start with the real question</p><h2>What are you trying to make easier?</h2><p class="contact-lede">Tell me what you do, what is not working, or what you want people to see. I will reply with a useful next step, not a sales funnel.</p><div class="contact-details"><a href="mailto:billthorpephotography@gmail.com">billthorpephotography@gmail.com</a></div></div>
+        <form class="project-form" action="mailto:billthorpephotography@gmail.com" method="post" enctype="text/plain">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="business">Business or project</label><input id="business" name="business" type="text"></div>
+          <div class="field"><label for="need">Main need</label><select id="need" name="main_need"><option value="">Choose one</option><option>Website</option><option>Business advice</option><option>YouTube or client video</option><option>Photography or content</option><option>Not sure yet</option></select></div>
+          <div class="field full"><label for="message">What should be easier?</label><textarea id="message" name="message" placeholder="A few sentences is enough."></textarea></div>
+          <p class="form-note">This opens your email app with the project details filled in.</p>
+          <button class="button form-submit" type="submit">Start a project</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
+  <footer><div class="wrap footer-row"><span>Bill Thorpe Photography and Creative Services</span><span><a href="youtube.html">YouTube</a> · <a href="https://billthorpephotography.com/">Photography</a></span><span>Built in Manhattan, Illinois</span></div></footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('#nav-links');
+    toggle?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
 </body>
 </html>
