@@ -74,11 +74,9 @@
     .button.secondary { color: var(--ink); background: transparent; border-color: var(--line); }
     .button.secondary:hover, .button.secondary:focus-visible { color: var(--ink); background: var(--paper-2); border-color: var(--ink); }
     .hero-visual { position: relative; min-height: 500px; }
-    .hero-photo { position: absolute; inset: 0 42px 42px 0; overflow: hidden; border-radius: var(--radius); background: var(--paper-2); box-shadow: var(--shadow); }
+    .hero-photo { position: absolute; inset: 0; overflow: hidden; border-radius: var(--radius); background: var(--paper-2); box-shadow: var(--shadow); }
     .hero-photo img { height: 100%; object-fit: cover; object-position: 55% center; }
-    .hero-note { position: absolute; right: 0; bottom: 0; width: min(230px, 52%); padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); box-shadow: 0 14px 35px rgba(23,25,22,.1); }
-    .hero-note strong { display: block; margin-bottom: 9px; font-size: 1.2rem; letter-spacing: -.04em; }
-    .hero-note p { margin: 0; color: var(--muted); font-size: .85rem; }
+
     section { padding: 110px 0; }
     .section-head { max-width: 700px; margin-bottom: 44px; }
     .section-head h2 { margin-bottom: 16px; font-size: clamp(2.35rem, 5vw, 4.8rem); }
@@ -165,8 +163,7 @@
       section { padding: 78px 0; }
       .hero { padding: 43px 0 64px; }
       .hero-visual { min-height: 350px; }
-      .hero-photo { inset: 0 28px 28px 0; }
-      .hero-note { width: min(205px, 68%); padding: 16px; }
+
       .video-panel { padding: 21px; }
       .video-panel .button { width: 100%; }
       .service-list { grid-template-columns: 1fr; }
@@ -214,8 +211,7 @@
         </div>
       </div>
       <div class="hero-visual" aria-label="Chicago skyline seen from a rooftop at night">
-        <div class="hero-photo"><img src="assets/chicago-rooftop-night.png" alt="Chicago skyline seen from a rooftop at night" width="1024" height="576"></div>
-        <div class="hero-note"><strong>Clear beats complicated.</strong><p>A useful website should help a customer understand what you do and what to do next.</p></div>
+        <div class="hero-photo"><img src="assets/chicago-rooftop-night-balanced.png" alt="Chicago skyline seen from a rooftop at night" width="1024" height="576"></div>
       </div>
     </header>
 
