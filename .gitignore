@@ -1,0 +1,18 @@
+# Local scratch / editor / OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# Local dev server caches
+.python-cache/
+__pycache__/
+
+# Upload scripts — must NEVER be committed (contain Shopify API token).
+# Skill pitfall: GitHub Push Protection blocks `shpat_...` tokens.
+upload-*.py
+shopify-*.py
+*-token*.json
+shopify-creds.json
+hermes-verify-*.py
