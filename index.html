@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bill Thorpe helps small businesses look clear, credible, and worth contacting through websites, brand insight, video, photography, and content.">
+  <meta name="description" content="Bill Thorpe is a Manhattan, Illinois photographer. Sports, portraits, weddings, products, and the websites, video, and content that surround the work.">
   <meta name="theme-color" content="#171916">
-  <title>Bill Thorpe | Websites, Video, Photography</title>
+  <title>Bill Thorpe | Photographer — Manhattan, Illinois</title>
   <link rel="canonical" href="https://billthorpephotography.com/">
   <style>
     :root {
@@ -62,12 +62,11 @@
     .nav-links .nav-action { color: var(--accent); }
     .nav-toggle { display: none; border: 1px solid var(--line); color: var(--ink); background: transparent; border-radius: 8px; padding: 8px 10px; cursor: pointer; }
     .hero { min-height: min(760px, calc(100dvh - 72px)); display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: clamp(34px, 7vw, 100px); align-items: center; padding: 72px 0 84px; }
-    .hero-copy, .hero-visual, .service-layout > *, .example-layout > *, .about-grid > *, .contact-grid > * { min-width: 0; max-width: 100%; }
+    .hero-copy, .hero-visual, .service-layout > *, .example-layout > *, .about-grid > *, .contact-grid > *, .gallery-masonry, .gallery-filters, .section-head.center { min-width: 0; max-width: 100%; }
     .eyebrow { margin: 0 0 18px; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1, h2, h3 { font-family: var(--display); letter-spacing: -.055em; line-height: .98; }
     h1 { max-width: 650px; margin-bottom: 24px; font-size: clamp(3.4rem, 8vw, 7.35rem); font-weight: 760; }
-
     .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 9px; color: var(--paper); background: var(--ink); font-size: .9rem; font-weight: 750; transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
     .button:hover, .button:focus-visible { transform: translateY(-2px); background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -76,14 +75,57 @@
     .hero-visual { position: relative; min-height: 500px; }
     .hero-photo { position: absolute; inset: 0; overflow: hidden; border-radius: var(--radius); background: var(--paper-2); box-shadow: var(--shadow); }
     .hero-photo img { height: 100%; object-fit: cover; object-position: 55% center; }
+    .hero-photo .hero-credit { position: absolute; right: 14px; bottom: 12px; z-index: 1; padding: 5px 9px; border-radius: 6px; color: #fff; font-size: .68rem; letter-spacing: .04em; background: rgba(0,0,0,.45); backdrop-filter: blur(6px); }
 
     section { padding: 110px 0; }
     .section-head { max-width: 700px; margin-bottom: 44px; }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; max-width: 760px; }
+    .section-head.center p { margin-left: auto; margin-right: auto; }
     .section-head h2 { margin-bottom: 16px; font-size: clamp(2.35rem, 5vw, 4.8rem); }
     .section-head p { max-width: 600px; margin-bottom: 0; color: var(--muted); font-size: 1.05rem; }
     .intro-band { padding: 34px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .intro-band p { max-width: 850px; margin: 0; font-size: clamp(1.18rem, 2.3vw, 1.85rem); letter-spacing: -.035em; line-height: 1.25; }
     .intro-band strong { color: var(--accent); }
+
+    /* Featured Work / Gallery */
+    .gallery-section { background: var(--paper-2); }
+    .gallery-filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 36px; padding: 0; list-style: none; }
+    .gallery-filters li { margin: 0; }
+    .filter-btn { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); background: var(--paper); font-size: .82rem; font-weight: 700; letter-spacing: .01em; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+    .filter-btn .count { color: var(--muted); font-weight: 650; font-size: .76rem; }
+    .filter-btn:hover, .filter-btn:focus-visible { border-color: var(--ink); color: var(--ink); }
+    .filter-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .filter-btn.active .count { color: color-mix(in srgb, var(--paper) 70%, transparent); }
+    .gallery-masonry { column-count: 3; column-gap: 14px; }
+    @media (max-width: 900px) { .gallery-masonry { column-count: 2; } }
+    @media (max-width: 560px) { .gallery-masonry { column-count: 1; } }
+    .gallery-item { position: relative; overflow: hidden; display: block; margin: 0 0 14px; break-inside: avoid; border-radius: var(--radius); background: var(--ink-soft); cursor: zoom-in; }
+    .gallery-item img { height: auto; object-fit: cover; transition: transform .55s ease, filter .35s ease; }
+    .gallery-item:hover img { transform: scale(1.035); filter: brightness(1.04); }
+    .gallery-item.hidden { display: none; }
+    .gallery-item .caption { position: absolute; z-index: 1; right: 14px; bottom: 12px; left: 14px; color: #fff; font-size: .85rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.15; opacity: 0; transform: translateY(6px); transition: opacity .25s ease, transform .25s ease; pointer-events: none; }
+    .gallery-item .caption .sub { display: block; margin-top: 3px; font-weight: 550; font-size: .72rem; color: rgba(255,255,255,.78); letter-spacing: .03em; text-transform: uppercase; }
+    .gallery-item .caption::before { content: ""; position: absolute; z-index: -1; right: -8px; bottom: -8px; left: -8px; top: -28px; background: linear-gradient(180deg, transparent 22%, rgba(0,0,0,.55)); }
+    .gallery-item:hover .caption, .gallery-item:focus-visible .caption { opacity: 1; transform: translateY(0); }
+    .gallery-empty { padding: 40px 0; text-align: center; color: var(--muted); display: none; }
+    .gallery-empty.visible { display: block; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(15,17,13,.92); backdrop-filter: blur(8px); }
+    .lightbox.open { display: flex; }
+    .lightbox-stage { position: relative; max-width: min(1280px, 96vw); max-height: 90vh; }
+    .lightbox-stage img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: var(--radius); background: var(--ink-soft); }
+    .lightbox-caption { margin-top: 14px; color: rgba(255,255,255,.85); font-size: .9rem; letter-spacing: -.005em; }
+    .lightbox-caption strong { display: block; color: #fff; font-weight: 750; }
+    .lightbox-caption span { color: rgba(255,255,255,.6); font-size: .78rem; }
+    .lightbox-btn { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; color: #fff; background: rgba(0,0,0,.45); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background .2s ease, transform .2s ease; }
+    .lightbox-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .lightbox-btn.prev { left: 16px; }
+    .lightbox-btn.next { right: 16px; }
+    .lightbox-close { position: fixed; top: 18px; right: 18px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; color: #fff; background: rgba(0,0,0,.45); cursor: pointer; font-size: 1.4rem; line-height: 1; }
+    .lightbox-close:hover { background: var(--accent); border-color: var(--accent); }
+    body.no-scroll { overflow: hidden; }
+
     .service-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
     .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
     .service { min-height: 180px; padding: 23px 20px 24px 0; border-bottom: 1px solid var(--line); }
@@ -91,7 +133,6 @@
     .service h3 { margin-bottom: 10px; font-family: var(--sans); font-size: 1.08rem; letter-spacing: -.02em; line-height: 1.15; }
     .service p { margin: 0; color: var(--muted); font-size: .92rem; }
     .service-number { display: block; margin-bottom: 21px; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
-    .paper-section { background: var(--paper-2); }
     .work-grid { display: grid; grid-template-columns: 1.3fr .7fr .7fr; grid-template-rows: 265px 265px; gap: 14px; }
     .work-card { position: relative; overflow: hidden; min-width: 0; border-radius: var(--radius); background: var(--ink-soft); }
     .work-card:first-child { grid-row: span 2; }
@@ -152,6 +193,8 @@
       .about-photo { max-width: 100%; }
       .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 280px 190px; }
       .work-card:first-child { grid-column: 1 / -1; grid-row: auto; }
+      .lightbox-btn.prev { left: 8px; }
+      .lightbox-btn.next { right: 8px; }
     }
     @media (max-width: 640px) {
       .wrap, .wrap-tight { width: min(100% - 28px, 1180px); }
@@ -163,7 +206,6 @@
       section { padding: 78px 0; }
       .hero { padding: 43px 0 64px; }
       .hero-visual { min-height: 350px; }
-
       .video-panel { padding: 21px; }
       .video-panel .button { width: 100%; }
       .service-list { grid-template-columns: 1fr; }
@@ -177,6 +219,9 @@
       .project-form { grid-template-columns: 1fr; }
       .field.full, .form-note { grid-column: auto; }
       .footer-row { display: grid; gap: 8px; }
+      .lightbox { padding: 12px; }
+      .lightbox-btn { width: 44px; height: 44px; }
+      .lightbox-close { top: 10px; right: 10px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -191,8 +236,9 @@
       <a class="brand" href="#top">Bill Thorpe<span>.</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
+        <a href="#work">Work</a>
         <a href="#services">Services</a>
-        <a href="#work">Selected work</a>
+        <a href="#examples">Clients</a>
         <a href="#videos">Video</a>
         <a href="#about">About</a>
         <a class="nav-action" href="#contact">Start a project</a>
@@ -203,32 +249,107 @@
   <main id="main">
     <header class="hero wrap" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">Creative services for real businesses</p>
-        <h1>Make the good work easier to see.</h1>
+        <p class="eyebrow">Photographer · Manhattan, Illinois</p>
+        <h1>Photography that makes the rest easier to see.</h1>
         <div class="actions">
-          <a class="button" href="#contact">Start a project</a>
-          <a class="button secondary" href="#work">View selected work</a>
+          <a class="button" href="#work">See the work</a>
+          <a class="button secondary" href="#contact">Start a project</a>
         </div>
       </div>
       <div class="hero-visual" aria-label="Woodland scene with golden-hour sunlight through the trees">
-        <div class="hero-photo"><img src="assets/woodland-golden-hour.jpg" alt="Golden-hour sunlight filtering through a wooded clearing" width="2560" height="1707"></div>
+        <div class="hero-photo">
+          <img src="assets/woodland-golden-hour.jpg" alt="Golden-hour sunlight filtering through a wooded clearing" width="2560" height="1707">
+          <span class="hero-credit">Photographed in Manhattan, IL</span>
+        </div>
       </div>
     </header>
 
     <div class="intro-band">
-      <div class="wrap"><p>Photography is the foundation of the work. It gives your website, videos, and marketing something real to build around. <strong>The same eye carries through to the way your business explains itself.</strong></p></div>
+      <div class="wrap"><p>Photography is the foundation of the work — for clients, for myself, and for the websites, video, and content that build around it. <strong>The same eye carries through.</strong></p></div>
     </div>
 
-    <section class="paper-section" id="work">
+    <section class="gallery-section" id="work">
       <div class="wrap">
-        <div class="section-head"><p class="eyebrow">Photography first</p><h2>The images set the standard.</h2><p>Sports, people, products, and places. High-quality photography gives every website, video, and campaign a stronger place to start.</p></div>
-        <div class="work-grid">
-          <a class="work-card" href="#contact"><img src="assets/sports-lacrosse-03-sectional-2026.jpg" alt="Lacrosse team celebrating a sectional championship" width="1280" height="854"><span class="work-caption"><strong>Sports and event stories</strong><span>Action, people, and the moment after it matters</span></span></a>
-          <a class="work-card" href="#contact"><img src="assets/headshot-01.jpg" alt="Professional headshot in a light blue suit" width="1024" height="1280"><span class="work-caption"><strong>Headshots</strong><span>People should look like themselves</span></span></a>
-          <a class="work-card" href="#contact"><img src="assets/birdstone.jpg" alt="Banded slate birdstone photographed for a client" width="1138" height="854"><span class="work-caption"><strong>Products and objects</strong><span>Detail, texture, and context</span></span></a>
-          <a class="work-card" href="#contact"><img src="assets/prom-03-golden-hour-red-tie.jpg" alt="Couple photographed in warm evening light" width="1280" height="854"><span class="work-caption"><strong>People and milestones</strong><span>Natural direction, useful images</span></span></a>
-          <a class="work-card" href="#contact"><img src="assets/kayak.jpg" alt="Two paddlers on a calm river" width="1137" height="853"><span class="work-caption"><strong>Places and atmosphere</strong><span>Images with room to breathe</span></span></a>
+        <div class="section-head center">
+          <p class="eyebrow">Featured work</p>
+          <h2>The photos set the standard.</h2>
+          <p>Sports, people, places, products, and the moments in between. Tap any photo to see it full size — use the filters to narrow the view.</p>
         </div>
+        <ul class="gallery-filters" role="tablist" aria-label="Filter gallery by category">
+          <li><button class="filter-btn active" type="button" data-filter="all" role="tab" aria-selected="true">All <span class="count">(16)</span></button></li>
+          <li><button class="filter-btn" type="button" data-filter="sports" role="tab" aria-selected="false">Sports <span class="count">(5)</span></button></li>
+          <li><button class="filter-btn" type="button" data-filter="people" role="tab" aria-selected="false">People <span class="count">(5)</span></button></li>
+          <li><button class="filter-btn" type="button" data-filter="weddings" role="tab" aria-selected="false">Weddings <span class="count">(2)</span></button></li>
+          <li><button class="filter-btn" type="button" data-filter="products" role="tab" aria-selected="false">Products <span class="count">(2)</span></button></li>
+          <li><button class="filter-btn" type="button" data-filter="places" role="tab" aria-selected="false">Places <span class="count">(2)</span></button></li>
+        </ul>
+        <div class="gallery-masonry" id="gallery">
+          <a class="gallery-item" href="#" data-category="sports" data-caption="Lincoln-Way Lacrosse — Sectional Champions" data-sub="Sports" aria-label="Lincoln-Way Lacrosse celebrating a sectional championship">
+            <img src="assets/sports-lacrosse-03-sectional-2026.jpg" alt="Lacrosse team celebrating a sectional championship" loading="lazy" width="1280" height="854">
+            <span class="caption">Lincoln-Way Lacrosse — Sectional Champions<span class="sub">Sports</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="sports" data-caption="Brennan — Youth Baseball, Batting Stance" data-sub="Sports" aria-label="Youth baseball player in batting stance">
+            <img src="assets/sports-baseball-brennan-01.jpg" alt="Youth baseball player in batting stance" loading="lazy" width="1280" height="854">
+            <span class="caption">Brennan — Youth Baseball<span class="sub">Sports</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="sports" data-caption="Lacrosse Celebration — Close Frame" data-sub="Sports" aria-label="Lacrosse team celebration close frame">
+            <img src="assets/sports-lacrosse-02-celebration.jpg" alt="Lacrosse team celebration close frame" loading="lazy" width="1280" height="854">
+            <span class="caption">Lacrosse Celebration<span class="sub">Sports</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="sports" data-caption="Softball — Pitcher at the Mound" data-sub="Sports" aria-label="Softball pitcher mid-windup">
+            <img src="assets/sports-softball-01-pitcher.jpg" alt="Softball pitcher mid-windup" loading="lazy" width="1280" height="854">
+            <span class="caption">Softball — Pitcher at the Mound<span class="sub">Sports</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="sports" data-caption="Wrestling — IESA State, Runner-Up" data-sub="Sports" aria-label="Wrestler on the podium at IESA state finals">
+            <img src="assets/sports-wrestling-01-iesa-2026-runner-up.jpg" alt="Wrestler on the podium at IESA state finals" loading="lazy" width="1280" height="854">
+            <span class="caption">Wrestling — IESA State, Runner-Up<span class="sub">Sports</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="people" data-caption="Couples — Field at Golden Hour" data-sub="People" aria-label="Couple photographed in a field at golden hour">
+            <img src="assets/couples-01-field-cowboy-boots.jpg" alt="Couple photographed in a field at golden hour" loading="lazy" width="1280" height="854">
+            <span class="caption">Couples — Field at Golden Hour<span class="sub">People</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="people" data-caption="Prom — Red Tie, Warm Light" data-sub="People" aria-label="Prom portrait in warm evening light">
+            <img src="assets/prom-03-golden-hour-red-tie.jpg" alt="Prom portrait in warm evening light" loading="lazy" width="1280" height="854">
+            <span class="caption">Prom — Red Tie, Warm Light<span class="sub">People</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="people" data-caption="Prom — Sunglasses &amp; Belt Buckle" data-sub="People" aria-label="Prom portrait with sunglasses and belt buckle">
+            <img src="assets/prom-02-belt-sunglasses.jpg" alt="Prom portrait with sunglasses and belt buckle" loading="lazy" width="1280" height="854">
+            <span class="caption">Prom — Sunglasses &amp; Belt Buckle<span class="sub">People</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="people" data-caption="Headshot — Light Blue Suit" data-sub="People" aria-label="Professional headshot in a light blue suit">
+            <img src="assets/headshot-01.jpg" alt="Professional headshot in a light blue suit" loading="lazy" width="1024" height="1280">
+            <span class="caption">Headshot — Light Blue Suit<span class="sub">People</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="people" data-caption="Two Men — Outdoor Portrait" data-sub="People" aria-label="Two men at an outdoor event">
+            <img src="assets/two-men-portrait.jpg" alt="Two men at an outdoor event" loading="lazy" width="1280" height="854">
+            <span class="caption">Two Men — Outdoor Portrait<span class="sub">People</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="weddings" data-caption="Wedding Kiss — Golden Hour" data-sub="Weddings" aria-label="Wedding couple kissing in golden hour light">
+            <img src="assets/wedding-kiss.jpg" alt="Wedding couple kissing in golden hour light" loading="lazy" width="1280" height="854">
+            <span class="caption">Wedding Kiss — Golden Hour<span class="sub">Weddings</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="weddings" data-caption="Wedding — Candid Smile" data-sub="Weddings" aria-label="Candid smile during a wedding">
+            <img src="assets/wedding-07-candid-smile.jpg" alt="Candid smile during a wedding" loading="lazy" width="1280" height="854">
+            <span class="caption">Wedding — Candid Smile<span class="sub">Weddings</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="products" data-caption="Banded Slate Birdstone" data-sub="Products" aria-label="Banded slate birdstone photographed for a client">
+            <img src="assets/birdstone.jpg" alt="Banded slate birdstone photographed for a client" loading="lazy" width="1138" height="854">
+            <span class="caption">Banded Slate Birdstone<span class="sub">Products</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="products" data-caption="Astronaut Bobblehead — Shallow Depth" data-sub="Products" aria-label="Astronaut bobblehead photographed with shallow depth of field">
+            <img src="assets/astronaut-product.jpg" alt="Astronaut bobblehead photographed with shallow depth of field" loading="lazy" width="1280" height="854">
+            <span class="caption">Astronaut Bobblehead — Shallow Depth<span class="sub">Products</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="places" data-caption="Kayak on the River" data-sub="Places" aria-label="Two paddlers on a calm river">
+            <img src="assets/kayak.jpg" alt="Two paddlers on a calm river" loading="lazy" width="1137" height="853">
+            <span class="caption">Kayak on the River<span class="sub">Places</span></span>
+          </a>
+          <a class="gallery-item" href="#" data-category="places" data-caption="Lighthouse Breakwater — Dawn" data-sub="Places" aria-label="Lighthouse breakwater at dawn with gulls in flight">
+            <img src="assets/lighthouse-breakwater.jpg" alt="Lighthouse breakwater at dawn with gulls in flight" loading="lazy" width="1280" height="854">
+            <span class="caption">Lighthouse Breakwater — Dawn<span class="sub">Places</span></span>
+          </a>
+        </div>
+        <p class="gallery-empty" id="gallery-empty" role="status" aria-live="polite">No photos in this category yet.</p>
         <a class="work-link" href="https://ifyp0g-1s.myshopify.com/" target="_blank" rel="noopener">Visit the photography store</a>
       </div>
     </section>
@@ -236,14 +357,14 @@
     <section id="services">
       <div class="wrap service-layout">
         <div class="section-head">
-          <p class="eyebrow">What I can help with</p>
-          <h2>Build the thing people need to understand.</h2>
-          <p>Good creative work starts with the business question. What are you selling, who needs it, and what should happen after someone finds you?</p>
+          <p class="eyebrow">…and the digital services around it</p>
+          <h2>When you need more than a great photo.</h2>
+          <p>The same eye that produces the photos can carry into the rest of a project — when a website, a video, or a small bit of strategy is what makes the work land.</p>
         </div>
         <div class="service-list">
-          <article class="service"><span class="service-number">01</span><h3>Website building</h3><p>Professional landing pages and small-business sites that explain the offer, show the proof, and make the next step obvious.</p></article>
-          <article class="service"><span class="service-number">02</span><h3>Brand insight</h3><p>Comprehensive research and analysis of your audience, competitors, positioning, and message, followed by practical recommendations you can use.</p></article>
-          <article class="service"><span class="service-number">03</span><h3>YouTube and client video</h3><p>Custom videos for businesses, creators, and projects that need more than a still image. Planning, shooting, editing, thumbnails, and publishing support.</p></article>
+          <article class="service"><span class="service-number">01</span><h3>Website building</h3><p>Landing pages and small-business sites that explain the offer, show the proof, and make the next step obvious.</p></article>
+          <article class="service"><span class="service-number">02</span><h3>Brand insight</h3><p>Research and analysis of your audience, competitors, positioning, and message — followed by practical recommendations you can act on.</p></article>
+          <article class="service"><span class="service-number">03</span><h3>YouTube and client video</h3><p>Custom videos for businesses, creators, and projects. Planning, shooting, editing, thumbnails, and publishing support.</p></article>
           <article class="service"><span class="service-number">04</span><h3>Photography and content</h3><p>Headshots, products, events, sports, and visual libraries that give the rest of your marketing something real to work with.</p></article>
         </div>
       </div>
@@ -251,7 +372,7 @@
 
     <section id="examples">
       <div class="wrap example-layout">
-        <div class="section-head"><p class="eyebrow">Websites and client examples</p><h2>Not just photos.</h2><p>I use the same process for a small business, a collector, a band, or a local service company: clarify the story, build the useful page, and make it easy to share.</p></div>
+        <div class="section-head"><p class="eyebrow">Websites and client examples</p><h2>Not just photos.</h2><p>Same process whether it's a small business, a collector, a band, or a local service company: clarify the story, build the useful page, and make it easy to share.</p></div>
         <div class="example-list">
           <article class="example"><div><h3>[REDACTED]</h3><p>Executive team headshots photographed for the company's Meet the Team page.</p></div><a href="https://[REDACTED]/about-us/meet-team" target="_blank" rel="noopener">View team</a></article>
           <article class="example"><div><h3>Barn Burner Relics</h3><p>Catalog, auction, and collector-focused web presence.</p></div><a href="https://barnburnerrelics.net/" target="_blank" rel="noopener">View site</a></article>
@@ -282,18 +403,30 @@
     <section id="about">
       <div class="wrap about-grid">
         <div class="about-photo"><img src="assets/about-bill-mirror.jpg" alt="Bill Thorpe outdoors with a camera" width="800" height="1280"></div>
-        <div class="about-copy"><p class="eyebrow">The person behind the work</p><h2>Useful first. Good-looking second. Both matter.</h2><p>I work with small businesses and independent people who know their work deserves a better presentation. Sometimes that means a website. Sometimes it means a short video, a set of product photos, or an honest conversation about what the customer is actually seeing.</p><p>The goal is not to make your business sound bigger than it is. The goal is to help the right people understand it faster.</p><div class="proof-line"><span>Manhattan, Illinois</span><span>Websites and media</span><span>Direct communication</span></div></div>
+        <div class="about-copy"><p class="eyebrow">The photographer</p><h2>Useful first. Good-looking second. Both matter.</h2><p>I work with small businesses, families, athletes, and independent people who know their work deserves a better presentation. Sometimes that means a website. Sometimes it means a short video, a set of product photos, or an honest conversation about what the customer is actually seeing.</p><p>The goal is not to make your business sound bigger than it is. The goal is to help the right people understand it faster.</p><div class="proof-line"><span>Manhattan, Illinois</span><span>Websites and media</span><span>Direct communication</span></div></div>
       </div>
     </section>
 
     <section class="contact" id="contact">
       <div class="wrap contact-grid">
-        <div><p class="eyebrow">Start with the real question</p><h2>What are you trying to make easier?</h2><p class="contact-lede">Tell me what you do, what is not working, or what you want people to see. I will reply with a useful next step, not a sales funnel.</p><div class="contact-details"><a href="mailto:billthorpephotography@gmail.com">billthorpephotography@gmail.com</a></div></div>
+        <div><p class="eyebrow">Start with the real question</p><h2>What are you trying to make easier?</h2><p class="contact-lede">Tell me what you do, what is not working, or what you want people to see. I will reply with a useful next step, not a sales funnel.</p><div class="contact-details"><a href="/cdn-cgi/l/email-protection#15777c7979617d7a676570657d7a617a726774657d6c557278747c793b767a78"><span class="__cf_email__" data-cfemail="1b797277776f7374696b7e6b73746f747c697a6b73625b7c767a727735787476">[email&#160;protected]</span></a></div></div>
         <form class="project-form" action="mailto:billthorpephotography@gmail.com" method="post" enctype="text/plain">
           <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
           <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
           <div class="field"><label for="business">Business or project</label><input id="business" name="business" type="text"></div>
-          <div class="field"><label for="need">Main need</label><select id="need" name="main_need"><option value="">Choose one</option><option>Website</option><option>Brand insight</option><option>YouTube or client video</option><option>Photography or content</option><option>Not sure yet</option></select></div>
+          <div class="field"><label for="need">Main need</label>
+            <select id="need" name="main_need">
+              <option value="">Choose one</option>
+              <option>Photography — portraits / headshots</option>
+              <option>Photography — sports / events</option>
+              <option>Photography — products</option>
+              <option>Photography — prom / formal</option>
+              <option>Photography — wedding / engagement</option>
+              <option>Website</option>
+              <option>YouTube or client video</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
           <div class="field full"><label for="message">What should be easier?</label><textarea id="message" name="message" placeholder="A few sentences is enough."></textarea></div>
           <p class="form-note">This opens your email app with the project details filled in.</p>
           <button class="button form-submit" type="submit">Start a project</button>
@@ -303,17 +436,114 @@
   </main>
 
   <footer><div class="wrap footer-row"><span>Bill Thorpe Photography and Creative Services</span><span><a href="youtube.html">YouTube</a> · <a href="https://ifyp0g-1s.myshopify.com/" target="_blank" rel="noopener">Store</a> · <a href="https://billthorpephotography.com/">Photography</a></span><span>Built in Manhattan, Illinois</span></div></footer>
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('#nav-links');
-    toggle?.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    links?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle?.setAttribute('aria-expanded', 'false');
-    }));
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" tabindex="-1">
+    <button class="lightbox-close" type="button" aria-label="Close photo viewer">×</button>
+    <button class="lightbox-btn prev" type="button" aria-label="Previous photo">‹</button>
+    <div class="lightbox-stage">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-btn next" type="button" aria-label="Next photo">›</button>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const links = document.querySelector('#nav-links');
+      toggle?.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      links?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      }));
+
+      const gallery = document.getElementById('gallery');
+      const items = gallery ? Array.from(gallery.querySelectorAll('.gallery-item')) : [];
+      const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+      const empty = document.getElementById('gallery-empty');
+
+      function applyFilter(filter) {
+        let visible = 0;
+        items.forEach(item => {
+          const cat = item.getAttribute('data-category');
+          const show = filter === 'all' || cat === filter;
+          item.classList.toggle('hidden', !show);
+          if (show) visible += 1;
+        });
+        if (empty) empty.classList.toggle('visible', visible === 0);
+        filterBtns.forEach(btn => {
+          const active = btn.getAttribute('data-filter') === filter;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', String(active));
+        });
+      }
+
+      filterBtns.forEach(btn => btn.addEventListener('click', () => {
+        applyFilter(btn.getAttribute('data-filter'));
+      }));
+
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCap = document.getElementById('lightbox-caption');
+      const closeBtn = lb.querySelector('.lightbox-close');
+      const prevBtn = lb.querySelector('.lightbox-btn.prev');
+      const nextBtn = lb.querySelector('.lightbox-btn.next');
+      let lbIndex = -1;
+      let lastFocus = null;
+
+      function visibleItems() {
+        return items.filter(item => !item.classList.contains('hidden'));
+      }
+
+      function openLightbox(i) {
+        const vis = visibleItems();
+        if (!vis.length) return;
+        lbIndex = ((i % vis.length) + vis.length) % vis.length;
+        const item = vis[lbIndex];
+        const img = item.querySelector('img');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.getAttribute('alt') || '';
+        const title = item.getAttribute('data-caption') || '';
+        const sub = item.getAttribute('data-sub') || '';
+        lbCap.innerHTML = title ? `<strong>${title}</strong>${sub ? `<span>${sub}</span>` : ''}` : '';
+        lastFocus = document.activeElement;
+        lb.classList.add('open');
+        document.body.classList.add('no-scroll');
+        closeBtn.focus();
+      }
+      function closeLightbox() {
+        lb.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        lbImg.src = '';
+        lbCap.innerHTML = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        lbIndex = -1;
+      }
+      function move(delta) {
+        if (lbIndex < 0) return;
+        openLightbox(lbIndex + delta);
+      }
+
+      items.forEach((item, idx) => item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const vis = visibleItems();
+        const i = vis.indexOf(item);
+        openLightbox(i >= 0 ? i : idx);
+      }));
+      closeBtn.addEventListener('click', closeLightbox);
+      prevBtn.addEventListener('click', () => move(-1));
+      nextBtn.addEventListener('click', () => move(1));
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') move(-1);
+        else if (e.key === 'ArrowRight') move(1);
+      });
+    })();
   </script>
 </body>
 </html>
