@@ -20,6 +20,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .page-index .sports-side img:first-child, .page-sports .grid img:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
 .page-index .sports-side img:last-child, .page-sports .grid img:last-child { grid-column: 1; grid-row: 2; }
 .page-sports .grid .tall { grid-row: auto; }
+.page-sports h1, .page-weddings h1 { font-size: clamp(3rem, 6vw, 6rem); }
+.page-weddings .grid { grid-template-columns: 1.1fr 1fr; }
+.page-weddings .grid img:first-child { grid-row: 1; }
+.page-weddings .grid img:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
+.page-weddings .grid img:last-child { grid-column: 1; grid-row: 2; }
 .page-sports .feature img, .page-weddings .lead img { aspect-ratio: auto; height: auto; }
 .page-sports .grid, .page-people .mosaic, .page-weddings .grid { align-items: start; }
 .page-sports .grid img, .page-people .mosaic img, .page-weddings .grid img { height: auto; }
@@ -37,6 +42,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media(max-width:640px) {
   .page-index .sports-layout, .page-sports .grid { grid-template-columns: 1fr; }
   .page-index .sports-side img, .page-sports .grid img { grid-column: auto !important; grid-row: auto !important; }
+  .page-weddings .grid { grid-template-columns: 1fr; }
+  .page-weddings .grid img { grid-column: auto !important; grid-row: auto !important; }
   .wrap { width: calc(100% - 28px); }
   section, .story, .copy, .services, .promise, .cta, .bridge, .work, .intake { padding-top: 60px; padding-bottom: 60px; }
   .hero, .page-projects .hero { padding-top: 48px; padding-bottom: 48px; }
