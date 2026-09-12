@@ -3,7 +3,7 @@
 Live route: https://billthorpephotography.com/galleries/lw-vs-andrew/
 Cloudflare Worker: btp-lw-andrew-gallery
 
-The gallery contains 24 selected photographs from 284 source exports. The public asset files in assets/private-lw-andrew are AES-256-GCM ciphertext encrypted with a cryptographically random key. Plaintext photographs, passwords, signing keys, and decryption keys must never be committed.
+The gallery contains 100 selected photographs from 284 source exports. The public asset files in assets/private-lw-andrew are AES-256-GCM ciphertext encrypted with a cryptographically random key. Plaintext photographs, passwords, signing keys, and decryption keys must never be committed.
 
 The Worker verifies a shared gallery password on the server, applies login rate limiting, and serves images only after validating a signed, expiring, HttpOnly session cookie. Password verification uses HMAC-SHA256 with a secret server key and the Web Crypto verification API. The gallery and all image responses use private/no-store and noindex headers.
 
