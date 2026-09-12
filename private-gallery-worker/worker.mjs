@@ -63,8 +63,8 @@ async function handle(request,env) {
  if(!match||!IDS.includes(Number(match[1])))return new Response('Not found',{status:404,headers:headers('text/plain')});
  if(request.method==='HEAD')return new Response(null,{headers:headers('image/jpeg')});
  const n=Number(match[1]);
- const response=await fetch('https://raw.githubusercontent.com/Billthorpe522/bill-thorpe-photography/'+env.ASSET_REF+'/assets/private-lw-andrew/'+n+'.bin',{redirect:'error'});
- if(!response.ok||Number(response.headers.get('Content-Length')||0)>600000)return new Response('Photo unavailable',{status:503,headers:headers('text/plain')});
+ const response=await fetch('https://raw.githubusercontent.com/Billthorpe522/bill-thorpe-photography/'+env.ASSET_REF+'/assets/private-lw-andrew/'+n+'.bin',{redirect:'manual'});
+ if(!response.ok||Number(response.headers.get('Content-Length')||0)>600000){console.error(JSON.stringify({event:'gallery-image-source',photo:n,status:response.status,length:response.headers.get('Content-Length')}));return new Response('Photo unavailable',{status:503,headers:headers('text/plain')});}
  const imageReader=response.body.getReader();let length=0;const buffers=[];
  while(true){const {done,value}=await imageReader.read();if(done)break;length+=value.length;if(length>600000){await imageReader.cancel();return new Response('Photo unavailable',{status:503,headers:headers('text/plain')});}buffers.push(value);}
  const encrypted=new Uint8Array(length);let index=0;for(const value of buffers){encrypted.set(value,index);index+=value.length;}
@@ -72,4 +72,4 @@ async function handle(request,env) {
  const image=await crypto.subtle.decrypt({name:'AES-GCM',iv:encrypted.slice(0,12),additionalData:encoder.encode('lw-andrew:'+n)},imageKey,encrypted.slice(12));
  return new Response(image,{headers:headers('image/jpeg')});
 }
-export default {async fetch(request,env) {try{return await handle(request,env);}catch{return new Response('Gallery temporarily unavailable. Please try again shortly.',{status:503,headers:headers('text/plain')});}}};
+export default {async fetch(request,env) {try{return await handle(request,env);}catch(error){console.error(JSON.stringify({event:'gallery-request-error',name:error.name,message:error.message}));return new Response('Gallery temporarily unavailable. Please try again shortly.',{status:503,headers:headers('text/plain')});}}};
