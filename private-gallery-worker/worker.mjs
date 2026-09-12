@@ -57,7 +57,7 @@ async function handle(request,env) {
   return redirect('__Secure-btp-lw='+payload+'.'+mac+'; Max-Age=86400'+cookieSuffix);
  }
  if(request.method!=='GET'&&request.method!=='HEAD')return new Response('Method not allowed',{status:405,headers:headers('text/plain')});
- if(!await authorized(request,env))return url.pathname===BASE?gate():new Response('Gallery password required',{status:401,headers:headers('text/plain')});
+ if(!await authorized(request,env))return url.pathname===BASE?gate((request.headers.get('Cookie')||'').includes('__Secure-btp-lw=')?'Your session could not be verified. Please enter the password again.':''):new Response('Gallery password required',{status:401,headers:headers('text/plain')});
  if(url.pathname===BASE)return request.method==='HEAD'?new Response(null,{headers:headers()}):gallery();
  const match=url.pathname.match(/^\/galleries\/lw-vs-andrew\/photo\/(\d+)$/);
  if(!match||!IDS.includes(Number(match[1])))return new Response('Not found',{status:404,headers:headers('text/plain')});
