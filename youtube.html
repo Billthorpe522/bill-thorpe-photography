@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,9 +6,22 @@
   <meta name="description" content="Bill Thorpe on YouTube: auction previews, behind-the-scenes client video, and practical visual storytelling.">
   <meta name="theme-color" content="#171916">
   <title>Bill Thorpe | YouTube</title>
-  <link rel="canonical" href="https://billthorpephotography.com/youtube.html">
+<link rel="canonical" href="https://billthorpephotography.com/youtube.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bill Thorpe Photography">
+<meta property="og:title" content="Bill Thorpe | YouTube">
+<meta property="og:description" content="Bill Thorpe on YouTube: auction previews, behind-the-scenes client video, and practical visual storytelling.">
+<meta property="og:url" content="https://billthorpephotography.com/youtube.html">
+<meta property="og:image" content="https://billthorpephotography.com/assets/btp-social-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bill Thorpe Photography showreel preview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bill Thorpe | YouTube">
+<meta name="twitter:description" content="Bill Thorpe on YouTube: auction previews, behind-the-scenes client video, and practical visual storytelling.">
+<meta name="twitter:image" content="https://billthorpephotography.com/assets/btp-social-preview.jpg">
   <style>
-    :root { color-scheme: light dark; --ink:#171916; --paper:#f2f0e9; --paper-2:#e7e5dc; --muted:#686d64; --line:#c9ccc2; --accent:#b8643e; --accent-dark:#8f482d; --radius:14px; --sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --display:"Arial Narrow","Aptos Display",Inter,ui-sans-serif,sans-serif; }
+    :root { color-scheme: light dark; --ink:#171916; --paper:#f2f0e9; --paper-2:#e7e5dc; --muted:#686d64; --line:#c9ccc2; --accent:#a75434; --accent-dark:#8f482d; --radius:14px; --sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --display:"Arial Narrow","Aptos Display",Inter,ui-sans-serif,sans-serif; }
     @media (prefers-color-scheme: dark) { :root { --ink:#f0eee7; --paper:#171916; --paper-2:#222720; --muted:#a4a99f; --line:#3d453c; --accent:#d17a53; --accent-dark:#ef9b73; } }
     *,*:before,*:after { box-sizing:border-box; }
     html { scroll-behavior:smooth; width:100%; max-width:100%; overflow-x:hidden; }
@@ -23,7 +36,12 @@
     .nav { min-height:72px; display:flex; justify-content:space-between; align-items:center; gap:25px; }
     .brand { font-weight:750; letter-spacing:-.04em; }
     .brand span { color:var(--accent); }
-    .nav a:last-child { color:var(--accent); font-size:.88rem; font-weight:750; }
+    .nav-links { display:flex; align-items:center; gap:18px; }
+    .nav-links a { color:var(--muted); font-size:.88rem; font-weight:750; }
+    .nav-links a:hover,.nav-links a:focus-visible { color:var(--ink); }
+    .nav-links a:last-child { color:var(--accent); }
+    .skip-link { position:fixed; z-index:1000; top:10px; left:10px; padding:10px 14px; border-radius:8px; background:var(--ink); color:var(--paper); font-weight:800; transform:translateY(-160%); }
+    .skip-link:focus { transform:translateY(0); }
     .hero { padding:92px 0 86px; border-bottom:1px solid var(--line); }
     .eyebrow { margin:0 0 17px; color:var(--accent); font-size:.72rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
     h1,h2,h3 { font-family:var(--display); letter-spacing:-.055em; line-height:.98; }
@@ -58,17 +76,17 @@
     .footer-row { display:flex; justify-content:space-between; gap:20px; color:var(--muted); font-size:.82rem; }
     .footer-row a { color:var(--accent-dark); font-weight:750; }
     @media (max-width:800px) { .video-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .service-layout { grid-template-columns:1fr; gap:35px; } }
-    @media (max-width:560px) { .wrap { width:calc(100% - 28px); } .nav { min-height:64px; gap:12px; } .nav a:last-child { max-width:54%; font-size:.78rem; text-align:right; } .hero { padding:63px 0 62px; } h1 { font-size:clamp(2.8rem,14vw,4.6rem); } .video-grid,.service-list { grid-template-columns:1fr; } .service-list div,.service-list div:nth-child(even) { padding:18px 0; border-left:0; } .hero-actions .button { width:100%; } .footer-row { display:grid; gap:8px; } }
-    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition-duration:.01ms !important; } }
+    @media (max-width:560px) { .wrap { width:calc(100% - 28px); } .nav { min-height:64px; flex-wrap:wrap; gap:8px 12px; padding:12px 0; } .nav-links { width:100%; justify-content:space-between; gap:10px; } .nav-links a { font-size:.78rem; } .hero { padding:63px 0 62px; } h1 { font-size:clamp(2.8rem,14vw,4.6rem); } .video-grid,.service-list { grid-template-columns:1fr; } .service-list div,.service-list div:nth-child(even) { padding:18px 0; border-left:0; } .hero-actions .button { width:100%; } .footer-row { display:grid; gap:8px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { animation:none !important; transition:none !important; } }
   </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#171916">
 </head>
 <body>
-  <header class="site-header"><nav class="nav wrap" aria-label="Primary navigation"><a class="brand" href="index.html">Bill Thorpe<span>.</span></a><a href="projects.html">Back to Projects</a></nav></header>
-  <main>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><nav class="nav wrap" aria-label="Primary navigation"><a class="brand" href="index.html">Bill Thorpe<span>.</span></a><div class="nav-links"><a href="index.html">Photography</a><a href="portfolio.html">Portfolio</a><a href="projects.html">Projects</a></div></nav></header>
+  <main id="main-content">
     <header class="hero"><div class="wrap"><p class="eyebrow">YouTube and client video</p><h1>Give the video a reason to exist.</h1><p class="lede">A channel can document the work, explain the offer, and give people a way to keep up. Here are a few recent examples from Bill's visual projects.</p><div class="hero-actions"><a class="button" href="https://www.youtube.com/@billthorpe-btfpv" target="_blank" rel="noopener">Visit the YouTube channel</a><a class="button secondary" href="projects.html#intake">Talk about a video</a></div></div></header>
     <section><div class="wrap"><div class="section-head"><p class="eyebrow">Selected videos</p><h2>Work in motion.</h2><p>Interviews, personal stories, objects, and events—each with a different reason to be on camera.</p></div><div class="video-grid">
       <a class="video" href="https://www.youtube.com/watch?v=WPugJ6D-dIg" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/WPugJ6D-dIg/hqdefault.jpg" alt="Dr. Kent Westbrook interview thumbnail"><div class="video-copy"><h3>A Conversation with Dr. Kent Westbrook</h3><p>Medicine, mentors, Native American pottery, and a lifetime of collecting. A conversation with Dr. Kent Westbrook and fellow collector Sam Johnson, filmed for Barn Burner Relics. Full interview · 5:50.</p></div></a>
@@ -76,11 +94,10 @@
       <a class="video" href="https://www.youtube.com/watch?v=j4zbNgIm8Dk" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/j4zbNgIm8Dk/maxresdefault.jpg" alt="Scottsbluff knife video thumbnail"><div class="video-copy"><h3>Scottsbluff Knife</h3><p>Object-focused storytelling for collectors.</p></div></a>
       <a class="video" href="https://www.youtube.com/watch?v=9zJWwop1X9c" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/9zJWwop1X9c/maxresdefault.jpg" alt="Rare piece auction video thumbnail"><div class="video-copy"><h3>Selling a Rare Piece</h3><p>Product context before the auction.</p></div></a>
       <a class="video" href="https://www.youtube.com/watch?v=j_yRBKp6AYU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/j_yRBKp6AYU/maxresdefault.jpg" alt="Behind the scenes relic auction video thumbnail"><div class="video-copy"><h3>Behind the Scenes of a Relic Auction</h3><p>Process, people, and the work around the work.</p></div></a>
-      <a class="video" href="https://www.youtube.com/watch?v=UUJe2S7v_Ww" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/UUJe2S7v_Ww/maxresdefault.jpg" alt="Barn Burner Relics Monday auction thumbnail"><div class="video-copy"><h3>Barn Burner Relics Monday Auction</h3><p>Live-event communication and presentation.</p></div></a>
     </div></div></section>
     <section class="service-band"><div class="wrap service-layout"><div class="service-copy"><p class="eyebrow">For clients</p><h2>Build the whole path.</h2><p>The video is only one part. I can help shape the idea, create the supporting photography, build the page it lives on, and make the next action clear.</p><a class="button" href="projects.html#intake">Start a project</a></div><div class="service-list"><div><strong>Story and planning</strong><span>Find the point before the camera comes out.</span></div><div><strong>Shooting and editing</strong><span>Capture the useful moments and shape the cut.</span></div><div><strong>Thumbnails and pages</strong><span>Give the video a strong first impression and a home.</span></div><div><strong>Publishing support</strong><span>Titles, descriptions, links, and the next step.</span></div></div></div></section>
   </main>
-  <footer><div class="wrap footer-row"><span>Bill Thorpe Photography and Creative Services</span><span><a href="projects.html">Projects</a> · <a href="https://www.youtube.com/@billthorpe-btfpv" target="_blank" rel="noopener">YouTube channel</a></span><span>Built in Manhattan, Illinois</span></div></footer>
+  <footer><div class="wrap footer-row"><span>Bill Thorpe Photography and Creative Services</span><span><a href="index.html">Photography</a> · <a href="portfolio.html">Portfolio</a> · <a href="projects.html">Projects</a> · <a href="https://www.youtube.com/@billthorpe-btfpv" target="_blank" rel="noopener">YouTube channel</a></span><span>Built in Manhattan, Illinois</span></div></footer>
 </body>
 </html>
 
