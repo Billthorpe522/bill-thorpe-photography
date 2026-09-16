@@ -1,12 +1,17 @@
 /* Shared navigation and responsive refinements for the photography preview. */
+:root { --accent: #a75434; }
+@media(prefers-color-scheme:dark) { :root { --accent: #d17a53; } }
 html { scroll-padding-top: 90px; }
 nav { position: relative; gap: 20px; }
 .brand { flex-shrink: 0; white-space: nowrap; }
 .primary-links { display: flex; align-items: center; gap: 20px; color: var(--muted); font-size: .875rem; font-weight: 700; }
 .primary-links a { display: inline-flex; align-items: center; min-height: 44px; }
 .primary-links a:hover { color: var(--ink); }
+.primary-links a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 8px; }
 .nav-toggle { display: none; font: inherit; font-weight: 700; min-height: 44px; padding: 8px 14px; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.skip-link { position: fixed; z-index: 1000; top: 10px; left: 10px; padding: 10px 14px; border-radius: 8px; background: var(--ink); color: var(--paper); font-weight: 800; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
 .hero > *, .contact-grid > *, .intake-grid > * { min-width: 0; }
 .note a { text-decoration: underline; overflow-wrap: anywhere; }
 .page-index .hero { grid-template-columns: 1fr 1.1fr; gap: 54px; }
@@ -57,4 +62,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .primary-links { font-size: .9rem; }
   .footer { flex-wrap: wrap; }
 }
-@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
