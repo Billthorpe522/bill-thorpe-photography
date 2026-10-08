@@ -38,6 +38,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .page-business .grid img:first-child { grid-column: auto; }
 @media(max-width:850px) {
   .page-index .hero { grid-template-columns: 1fr; gap: 32px; }
+}
+@media(max-width:1100px) {
   nav { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
   .primary-links { width: 100%; flex-wrap: wrap; gap: 6px 18px; }
   .js-nav .nav-toggle { display: block; }
@@ -63,3 +65,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .footer { flex-wrap: wrap; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+.page-projects .work { padding: 24px 0; }

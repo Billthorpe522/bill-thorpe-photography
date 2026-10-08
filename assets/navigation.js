@@ -8,5 +8,5 @@ document.querySelectorAll('nav').forEach(nav => {
   links.addEventListener('click', event => { if (event.target.closest('a')) close(); });
   nav.addEventListener('keydown', event => { if (event.key === 'Escape') { close(); button.focus(); } });
   document.addEventListener('click', event => { if (!nav.contains(event.target)) close(); });
-  matchMedia('(max-width:850px)').addEventListener('change', close);
+  matchMedia('(max-width:1100px)').addEventListener('change', close);
 });
