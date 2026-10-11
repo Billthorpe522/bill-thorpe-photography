@@ -2,3 +2,5 @@
 .sandburg-card{margin-bottom:28px}.sandburg-card .game-mosaic{align-items:start}.sandburg-card .game-mosaic img{aspect-ratio:auto;height:auto}.sandburg-highlights{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;align-items:start}.sandburg-highlights img{display:block;width:100%;height:auto}.sandburg-highlights a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}@media(max-width:640px){.sandburg-highlights{grid-template-columns:1fr}}
 
 .central-card{margin-bottom:28px}.central-card .game-mosaic{align-items:start}.central-card .game-mosaic img{aspect-ratio:auto;height:auto}
+
+.game-coverage{max-width:68ch;margin-top:14px}.game-coverage a{text-decoration:underline;text-underline-offset:3px}
