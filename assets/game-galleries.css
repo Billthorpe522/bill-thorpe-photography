@@ -4,3 +4,5 @@
 .central-card{margin-bottom:28px}.central-card .game-mosaic{align-items:start}.central-card .game-mosaic img{aspect-ratio:auto;height:auto}
 
 .game-coverage{max-width:68ch;margin-top:14px}.game-coverage a{text-decoration:underline;text-underline-offset:3px}
+
+.gottardo-card{margin-bottom:28px}.gottardo-card .game-mosaic img{aspect-ratio:4/3;object-fit:contain;background:#171916}.game-feature>.game-coverage{margin:0 0 24px}
