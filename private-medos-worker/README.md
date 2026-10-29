@@ -1,7 +1,7 @@
 # Jessica & Ken wedding story
 
 The protected story lives at `/galleries/jessica-ken-medos/`. Every thumbnail,
-viewer image and original download requires this gallery's own signed session.
+viewer image and photograph download requires this gallery's own signed session.
 The four opening photographs are protected with the rest of the collection.
 
 `photos.mjs` contains public routing metadata for encrypted assets. `selection.mjs`
@@ -19,3 +19,5 @@ bindings. Its deployment config belongs in the private work directory.
 No source image, password or key is contained in these modules. Do not deploy the
 empty scaffold: fill the photo metadata and story sequence, verify all hashes,
 and test the gate, images, viewer and logout first.
+
+The current surname is Medo. Four separate, resized homepage cover derivatives are public with the owner's October 29 authorization; the 90-photo story routes stay protected. Existing internal URLs/asset IDs are retained for compatibility.
