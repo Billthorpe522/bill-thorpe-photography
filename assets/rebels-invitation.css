@@ -1,2 +1,13 @@
 /* Text-only season entrance; all photographs remain inside the protected gallery. */
 .rebels-invitation{background:#e9e8df;border-color:#c9ccc2;color:#20251f}.rebels-invitation:hover{background:#e2e2d7}.rebels-invitation .medos-monogram{font-family:"Arial Narrow","Aptos Display",Arial,sans-serif;font-weight:750;letter-spacing:-4px;color:#a75434}.rebels-invitation h2,.rebels-invitation h3{font-family:"Arial Narrow","Aptos Display",Arial,sans-serif;font-weight:750;letter-spacing:-1px}.rebels-invitation .medos-label{color:#a75434}.rebels-invitation .medos-open{color:#374333}.rebels-invitation:focus-visible{outline-color:#a75434}
+
+/* Public Rebels cover: shared BTP card layout, with infield accents for baseball. */
+.rebels-card{--ink:#20251f;--paper:#f2eee5;--paper2:#eee7db;--muted:#50544a;--accent:#824023;--line:#c9bdab;margin-bottom:28px}
+.rebels-card .game-mosaic{align-items:start}.rebels-card .game-mosaic img{aspect-ratio:auto;height:auto}
+.rebels-card .game-caption{position:relative;padding-left:32px;background-image:url("gallery-covers/rebels-grain.svg"),linear-gradient(110deg,#f0eade,#ece2d3);background-size:192px 192px,100% 100%}
+.rebels-card .game-caption::before{content:"";position:absolute;left:11px;top:18px;bottom:18px;width:4px;background:#fffdf6;opacity:.8;clip-path:polygon(20% 0,100% 0,84% 22%,100% 49%,77% 73%,94% 100%,5% 100%,18% 77%,0 52%,15% 25%);pointer-events:none}
+.rebels-heading{display:flex;align-items:center;gap:18px;min-width:0}.rebels-heading>div{min-width:0}
+.rebels-emblem{display:block;flex:0 0 54px;width:54px;height:54px;background:url("gallery-covers/rebels-mark.svg") center/contain no-repeat;pointer-events:none}
+.rebels-card .game-open{flex-shrink:0}.rebels-card .game-meta{line-height:1.6}
+@media(max-width:640px){.rebels-card .game-caption{padding-left:26px}.rebels-heading{gap:12px}.rebels-emblem{flex-basis:44px;width:44px;height:44px}.rebels-card .game-caption::before{left:9px}.rebels-card .game-open{white-space:normal;max-width:100%}}
+@media(prefers-contrast:more){.rebels-card .game-caption{background-image:none}.rebels-card .game-caption::before,.rebels-emblem{display:none}}
