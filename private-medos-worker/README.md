@@ -20,4 +20,4 @@ No source image, password or key is contained in these modules. Do not deploy th
 empty scaffold: fill the photo metadata and story sequence, verify all hashes,
 and test the gate, images, viewer and logout first.
 
-The current surname is Medo. Four separate, resized homepage cover derivatives are public with the owner's October 29 authorization; the 90-photo story routes stay protected. Existing internal URLs/asset IDs are retained for compatibility.
+The gallery is titled Jessica & Ken. Four separate, resized homepage cover derivatives are public with the owner's October 29 authorization; the 90-photo story routes stay protected. Existing internal URLs/asset IDs are retained for compatibility.
